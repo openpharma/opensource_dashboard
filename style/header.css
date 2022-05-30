@@ -1,12 +1,39 @@
-.block-container {
-    padding: 0rem 0rem 0rem;
-    margin: 0rem 0rem 0rem;
+.navbar{
+    font-family: 'Trebuchet MS', sans-serif;
+    position: fixed;
+    width: 100%;
+    background: #002171;
+    z-index: 99999999999999999999;
+    left: 0rem;
+    top: 0rem;
+    height: 75px;
 }
 
-header {
-    margin-top: -2.875rem;
+.navbar-nav,
+.navbar-nav li {
+    display: inline-block;
+    margin: 0;
 }
 
-#app {
-    margin-top: -20px;
+.navbar .navitem,
+.navbar .navbar-brand {
+    color: white; /* blue colors for links too */
+    text-decoration: inherit;
+    position: relative;
+    top: -22px;
+    padding: 28px 20px 28px 20px;
+}
+
+.navbar .navbar-brand {
+    position: relative;
+    top: -22px;
+}
+
+.navbar .navitem:hover {
+    background-color: white;
+    color: #002171;
+}
+
+iframe{
+    height: 0rem;
 }

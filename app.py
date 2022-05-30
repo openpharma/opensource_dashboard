@@ -1,19 +1,21 @@
 import streamlit as st
-import streamlit.components.v1 as components
-from multiapp import MultiApp
+import utils as utl
 from apps import pharmapackages, openissues, leaderboard # import your app modules here
 
-app = MultiApp()
-st.set_page_config(
-    layout="wide"
-)
+st.set_page_config(layout="wide", page_title='Navbar sample')
+st.set_option('deprecation.showPyplotGlobalUse', False)
+utl.navbar_component()
+utl.inject_custom_css()
 
-with open("style/header.css") as f:
-    st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-
-# Add all your application here
-app.add_app("Pharma Packages", pharmapackages.page_content)
-app.add_app("Open issues", openissues.page_content)
-app.add_app("LeaderBoard", leaderboard.page_content)
-# The main app
-app.run()
+def navigation():
+    route = utl.get_current_route()
+    if route == "pharmapackages":
+        pharmapackages.page_content()
+    elif route == "openissues":
+        openissues.page_content()
+    elif route == "leaderboard":
+        leaderboard.page_content()
+    elif route == None:
+        pharmapackages.page_content()
+        
+navigation()

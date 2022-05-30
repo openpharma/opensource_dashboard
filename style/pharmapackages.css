@@ -1,0 +1,12 @@
+#pharmapackages {
+    background-color: white;
+    color: #002171;
+}
+
+section[data-testid="stSidebar"] {
+    margin-top: 75px;
+}
+
+section[data-testid="stSidebar"] :last-child {
+    top: 85px;
+}
