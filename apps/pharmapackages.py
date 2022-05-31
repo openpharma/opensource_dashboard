@@ -1,19 +1,34 @@
-from cProfile import label
-from logging import PlaceHolder
 import streamlit as st
+from search_functions import df_pharmpack
 
 def page_content():
+
+    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/repos.csv'
+
     with open('style/pharmapackages.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
+    """
+    
+    Read Data
+
+    """
+
+    df = df_pharmpack.read_data_repos(PATH)
+
+    """
+
+    Side Bar Filter
+
+    """
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
         
         st.header("Categories")
         categories_topics = st.multiselect(
             label='Select Multiple categories',
-            options=['TLG', 'CTV', 'Clinical Statistics', 'Filings tools', 'Omics'],
-            default=['TLG', 'CTV', 'Clinical Statistics', 'Filings tools', 'Omics']
+            options=['ctv', 'filing-tools', 'filing-tools, tlg', 'omics', 'clinical-statistics', 'tlg', 'filing-tools, gh-action', 'pkpd', 'synthetic-data'],
+            default=['ctv', 'filing-tools', 'filing-tools, tlg', 'omics', 'clinical-statistics', 'tlg', 'filing-tools, gh-action', 'pkpd', 'synthetic-data']
         )
 
         st.header("Min # of contributions")
@@ -26,15 +41,15 @@ def page_content():
         st.header("Language")
         prog_language = st.radio(
             label="Choose the language",
-            options=('All', 'R', 'Python', 'C++'),
+            options=('All', 'R', 'Python', 'C++', 'Fortran', 'C'),
             index=0
         )
         st.header("Risk Metrics")
         risk_metric = st.slider(
-            label="0 = Low maintainability ; 100 = High maintainability",
+            label="0 = Low maintainability ; 200 = High maintainability",
             min_value=0,
-            max_value=100, 
-            value=50
+            max_value=200, 
+            value=0
         )
 
         st.header("License")
@@ -51,8 +66,17 @@ def page_content():
     )
 
     """
+
     HTML Card
+
     """
+
+    print(categories_topics,min_nb_contrib,prog_language,risk_metric,license_law)
+
+    df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law)
+
+    st.dataframe(df_clean)
+
     component = rf'''
                 <div class="row">
                     <div class="col-lg-12">
