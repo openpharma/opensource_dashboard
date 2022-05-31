@@ -33,3 +33,64 @@ Content
     position: relative;
     top: -30px;
 }
+
+.card {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  
+  .icon_package_card {
+    -ms-flex: 0 0 80px;
+      flex: 0 0 80px;
+  }
+  
+  @media (max-width: 690px) {
+    .icon_package_card {
+      display: none; 
+    } 
+  }
+  
+  .row_1 h2 {
+    font-size: 40px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .row_1 p {
+    color: gray;
+    font-size: 18px;
+  }
+  
+  .icon_proj {
+    position: relative;
+    top: -5px;
+  }
+  
+  .row_2 {
+    margin: 5px;
+  }
+  
+  .row_2 p {
+    font-size: 14px;
+    padding: 0;
+    margin: 5px;
+  }
+  
+  .row_2 h2 {
+    font-size: 28px;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .row_2 > .col-xl-3 {
+    margin-top: 20px;
+    padding: 0;
+  }
+  
+  .metrics_confidence {
+    display: inline-block;
+    width: 16px;
+    height: 10px;
+    border-radius: 3px;
+    background: green;
+  }
+  

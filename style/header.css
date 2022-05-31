@@ -21,13 +21,14 @@
     color: white; /* blue colors for links too */
     text-decoration: inherit;
     position: relative;
-    top: -24px;
+    top: -13px;
     padding: 28px 20px 28px 20px;
 }
 
 .navbar .navbar-brand {
     position: relative;
     top: -22px;
+    padding-bottom: 5px;
 }
 
 .navbar .navitem:hover {
