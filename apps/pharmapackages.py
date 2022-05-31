@@ -35,7 +35,7 @@ def page_content():
         min_nb_contrib = st.slider(
             label="Choose a value",
             min_value=0, 
-            max_value=200, 
+            max_value=30, 
             value=0
         )
         st.header("Language")
@@ -70,8 +70,6 @@ def page_content():
     HTML Card
 
     """
-
-    print(categories_topics,min_nb_contrib,prog_language,risk_metric,license_law)
 
     df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law)
 
