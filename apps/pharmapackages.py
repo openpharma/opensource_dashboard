@@ -79,10 +79,11 @@ def page_content():
     
     l_components = df_pharmpack.fillin_cards(df_clean)
 
-    with col1:
-        for i in range(0, int(len(l_components)/2) +2, 2):
-            st.markdown(l_components[i], unsafe_allow_html=True)
+    if (len(l_components)>=1):
+        with col1:
+            for i in range(0, len(l_components), 2):
+                st.markdown(l_components[i], unsafe_allow_html=True)
 
-    with col2:
-        for i in range(1, int(len(l_components)/2) +2, 2):
-            st.markdown(l_components[i], unsafe_allow_html=True)
+        with col2:
+            for i in range(1, len(l_components), 2):
+                st.markdown(l_components[i], unsafe_allow_html=True)
