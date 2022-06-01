@@ -67,6 +67,13 @@ Content
     top: -5px;
   }
   
+  .proj_description {
+      max-height: 150px;
+      overflow: hidden;
+      padding-right: 20px;
+      margin-bottom: 30px;
+  }
+
   .row_2 {
     margin: 5px;
   }
@@ -88,11 +95,14 @@ Content
     padding: 0;
   }
   
-  .metrics_confidence {
-    display: inline-block;
-    width: 16px;
-    height: 10px;
-    border-radius: 3px;
-    background: green;
+  .progress {
+      margin: auto;
+      margin-top: 15px;
+      width: 60%;
   }
-  
+
+  .progress p {
+      color: white;
+      font-size: 14px;
+      margin-top: -2px;
+  }

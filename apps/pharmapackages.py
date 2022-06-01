@@ -46,9 +46,9 @@ def page_content():
         )
         st.header("Risk Metrics")
         risk_metric = st.slider(
-            label="0 = Low maintainability ; 200 = High maintainability",
+            label="0 = Low maintainability ; 100 = High maintainability",
             min_value=0,
-            max_value=200, 
+            max_value=100, 
             value=0
         )
 
@@ -73,7 +73,7 @@ def page_content():
 
     df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law)
     df_clean = df_clean.sort_values(by=['risk_column'], ascending=False, ignore_index=True)
-    st.dataframe(df_clean)
+    st.dataframe(df_clean.describe())
 
     col1, col2 = st.columns([1,1])
     

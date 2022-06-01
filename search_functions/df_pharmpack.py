@@ -33,7 +33,8 @@ def read_data_repos(path: str) -> pd.DataFrame:
     df['lang'] = df['lang'].fillna('R')
     df['cran_license'] = df['cran_license'].fillna('Other Licenses')
     df['license_clean'] = df['cran_license'].apply(clean_license)
-    df['risk_column'] = 20*df['riskmetric_score_quintile']+df['os_health']
+    df['risk_column'] = (20*df['riskmetric_score_quintile']+df['os_health'])
+    df['risk_column'] = (100*df['risk_column']/df['risk_column'].max())
     df['last_commit_d'] = (pd.to_datetime("today") - pd.to_datetime(df['Last Commit'])).dt.days.astype('Int64')
     return df
 
@@ -57,14 +58,17 @@ def filter_df(
 
 def fillin_cards(df: pd.DataFrame) -> List[str]:
     l_data = []
-    nb_cards = 10
+    nb_cards = 20
     pack_name = df['repo'][:nb_cards].tolist()
-    cran_descri = df['description'][:nb_cards].tolist()
+    descri = df['description'][:nb_cards].tolist()
     org = df['org'][:nb_cards].tolist()
     contrib = df['Contributors'][:nb_cards].tolist()
     last_commit = df['last_commit_d'][:nb_cards].tolist()
+    risk_metric = (5+df['risk_column'][:nb_cards]).tolist()
+    risk_color = ['bg-success' if (x >=  53.0) else 'bg-danger' if (x <= 21.0) else 'bg-warning' for x in risk_metric]
     if (len(pack_name)>=1):
         for i in range(0, len(pack_name)):
+            
             components = rf'''
                     <div class="row">
                         <div class="col-lg-12">
@@ -83,8 +87,8 @@ def fillin_cards(df: pd.DataFrame) -> List[str]:
                                     <img src="https://cran.r-project.org/Rlogo.svg" width="22" height="22" class="ml-2" alt="" />
                                     </div>
                                     <div class="proj_description">
-                                    <p class="mt-3">
-                                        {cran_descri[i]}
+                                    <p class="mt-3 text-justify">
+                                        {descri[i]}
                                     </p>
                                     </div>
                                 </div>
@@ -108,9 +112,11 @@ def fillin_cards(df: pd.DataFrame) -> List[str]:
                                 </div>
                                 <div class="col-xl-3 text-center align-top">
                                     <p>Reliability</p>
-                                    <div class="metrics_confidence"></div>
-                                    <div class="metrics_confidence"></div>
-                                    <div class="metrics_confidence"></div>
+                                    <div class="progress">
+                                        <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {risk_metric[i]}%" role="progressbar" aria-valuenow="{risk_metric[i]}" aria-valuemin="0" aria-valuemax="100">
+                                        <p>{int(risk_metric[i]-5)}</p>
+                                        </div>
+                                    </div>
                                 </div>
                                 </div>
                             </div>
