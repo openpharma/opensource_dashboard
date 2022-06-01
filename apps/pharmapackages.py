@@ -73,7 +73,7 @@ def page_content():
 
     df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law)
     df_clean = df_clean.sort_values(by=['risk_column'], ascending=False, ignore_index=True)
-    st.dataframe(df_clean.describe())
+    #st.dataframe(df_clean)
 
     col1, col2 = st.columns([1,1])
     
@@ -87,3 +87,5 @@ def page_content():
         with col2:
             for i in range(1, len(l_components), 2):
                 st.markdown(l_components[i], unsafe_allow_html=True)
+    else:
+        st.markdown("We don't have a package matching your request")
