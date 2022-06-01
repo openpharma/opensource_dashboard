@@ -1,5 +1,9 @@
 # opensource_dashboard
 
+# Fast deployement streamlit cloud - (test version)
+
+https://share.streamlit.io/openpharma/opensource_dashboard/main/app.py
+
 ## Aims
 
 * Help me find a relevant package by 'NLP' to define topics/categories (e.g. all the table packages, or all ADaM packages)
