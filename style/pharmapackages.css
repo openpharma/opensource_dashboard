@@ -36,6 +36,8 @@ Content
 
 .card {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    margin-bottom: 30px;
+    border-radius: 15px;
   }
   
   .icon_package_card {
