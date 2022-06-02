@@ -36,6 +36,10 @@ def read_data_repos(path: str) -> pd.DataFrame:
     df['risk_column'] = (20*df['riskmetric_score_quintile']+df['os_health'])
     df['risk_column'] = (100*df['risk_column']/df['risk_column'].max())
     df['last_commit_d'] = (pd.to_datetime("today") - pd.to_datetime(df['Last Commit'])).dt.days.astype('Int64')
+
+    df_icon = pd.read_csv('temporary/icon_package.csv')
+    df = df.merge(df_icon, how='left', on='full_name', suffixes=('', '_'))
+    df['icon_package'] = df['icon_package'].fillna('https://avatars.githubusercontent.com/u/8436743?s=200&v=4')
     return df
 
 def filter_df(
@@ -54,11 +58,17 @@ def filter_df(
     if(language != 'All'):
         df = df[df['lang'] == language.lower()]
 
+    # Simple character matching
+    list_search = search_bar.lower().split()
+    rstr = '|'.join(list_search)
+    df = df[df['title'].str.lower().str.contains(rstr) | df['description'].str.lower().str.contains(rstr)]
+
     return df.reset_index(drop=True)
 
 def fillin_cards(df: pd.DataFrame) -> List[str]:
     l_data = []
     nb_cards = 20
+    pack_img = df['icon_package'][:nb_cards].tolist()
     pack_name = df['repo'][:nb_cards].tolist()
     descri = df['description'][:nb_cards].tolist()
     org = df['org'][:nb_cards].tolist()
@@ -76,7 +86,7 @@ def fillin_cards(df: pd.DataFrame) -> List[str]:
                             <div class="card-body pb-0">
                                 <div class="row row_1">
                                 <div class="col icon_package_card">
-                                    <img src="https://avatars.githubusercontent.com/u/8436743?s=200&v=4" alt="" class="m-2" height=80 width=80 />
+                                    <img src="{pack_img[i]}" alt="" class="m-2" height=80 width=80 />
                                 </div>
                                 <div class="col text-left">
                                     <h2 class="d-inline-block">{pack_name[i]}</h2>
