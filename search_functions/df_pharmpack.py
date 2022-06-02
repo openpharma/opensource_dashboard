@@ -39,7 +39,7 @@ def read_data_repos(path: str) -> pd.DataFrame:
 
     df_icon = pd.read_csv('temporary/icon_package.csv')
     df = df.merge(df_icon, how='left', on='full_name', suffixes=('', '_'))
-    df['icon_package'] = df['icon_package'].fillna('https://avatars.githubusercontent.com/u/8436743?s=200&v=4')
+    df['icon_package'] = df['icon_package'].fillna("https://cran.r-project.org/Rlogo.svg")
     return df
 
 def filter_df(
@@ -86,7 +86,7 @@ def fillin_cards(df: pd.DataFrame) -> List[str]:
                             <div class="card-body pb-0">
                                 <div class="row row_1">
                                 <div class="col icon_package_card">
-                                    <img src="{pack_img[i]}" alt="" class="m-2" height=80 width=80 />
+                                    <img src="{pack_img[i]}" alt="" class="m-2" width=80 />
                                 </div>
                                 <div class="col text-left">
                                     <h2 class="d-inline-block">{pack_name[i]}</h2>

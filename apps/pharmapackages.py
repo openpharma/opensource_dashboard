@@ -73,7 +73,7 @@ def page_content():
 
     df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law,search_bar)
     df_clean = df_clean.sort_values(by=['risk_column'], ascending=False, ignore_index=True)
-    st.dataframe(df_clean)
+    #st.dataframe(df_clean)
 
     col1, col2 = st.columns([1,1])
     
