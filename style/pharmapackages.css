@@ -48,6 +48,7 @@ Content
   .icon_package_card {
     -ms-flex: 0 0 80px;
       flex: 0 0 80px;
+      padding-right: 0px;
   }
   
   @media (max-width: 690px) {
@@ -56,27 +57,36 @@ Content
     } 
   }
   
+
   .row_1 h2 {
-    font-size: 40px;
-    padding: 0;
+    font-size: 1.5em;
+    text-align: right;
     margin: 0;
+    padding: 0;
+    font-weight: 600;
+  }
+
+  .row_1 h2 span {
+    margin-left: 0px;
   }
   
   .row_1 p {
     color: gray;
-    font-size: 18px;
+    font-size: 0.8em;
   }
   
   .icon_proj {
     position: relative;
     top: -5px;
+    margin: 0;
+    padding: 0;
   }
   
   .proj_description {
-      max-height: 150px;
+      max-height: 130px;
       overflow: hidden;
-      padding-right: 20px;
-      margin-bottom: 30px;
+      padding-right: 15px;
+      margin-bottom: 15px;
   }
 
   .row_2 {
@@ -84,25 +94,25 @@ Content
   }
   
   .row_2 p {
-    font-size: 14px;
+    font-size: 0.7em;
     padding: 0;
-    margin: 5px;
+    margin: 3px;
   }
   
   .row_2 h2 {
-    font-size: 28px;
+    font-size: 1.4em;
     padding: 0;
     margin: 0;
   }
   
   .row_2 > .col-xl-3 {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 0;
   }
   
   .progress {
       margin: auto;
-      margin-top: 15px;
+      margin-top: 10px;
       width: 60%;
   }
 
