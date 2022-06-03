@@ -1,20 +1,19 @@
 import streamlit as st
-from search_functions import df_pharmpack
+from python_functions import df_pharmpack
 
 def page_content():
-
-    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/repos.csv'
-
-    with open('style/pharmapackages.css') as f:
-        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     """
     
     Read Data
 
     """
-
+    
+    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/repos.csv'
     df = df_pharmpack.read_data_repos(PATH)
+
+    with open('style/pharmapackages.css') as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     """
 

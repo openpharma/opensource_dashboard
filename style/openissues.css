@@ -1,4 +1,29 @@
+/* ----------------------
+Sidebar
+-----------------------*/
+
 #openissues {
     background-color: white;
     color: #002171;
+}
+
+section[data-testid="stSidebar"] {
+    margin-top: 75px;
+}
+
+section[data-testid="stSidebar"] > :first-child > :last-child  {
+    margin-top: -90px;
+}
+
+section[data-testid="stSidebar"] > :last-child {
+    top: 85px;
+}
+
+/* ----------------------
+Content
+-----------------------*/
+
+/* remove upper space on content page */
+iframe:not([title="st_aggrid.agGrid"]) {
+    height: 1rem;
 }

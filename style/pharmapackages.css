@@ -25,6 +25,11 @@ section[data-testid="stSidebar"] > :last-child {
 Content
 -----------------------*/
 
+/* remove upper space on content page */
+.main iframe {
+  height: 1rem;
+}
+
 .appview-container > :last-child {
     margin-top: -80px;
 }
