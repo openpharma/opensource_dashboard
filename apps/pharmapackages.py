@@ -1,6 +1,7 @@
 import streamlit as st
 from python_functions import df_pharmpack
 
+
 def page_content():
 
     """
@@ -20,6 +21,8 @@ def page_content():
     Side Bar Filter
 
     """
+
+
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
         
@@ -63,7 +66,6 @@ def page_content():
         '',
         placeholder='Search a package...'
     )
-
     """
 
     HTML Card
