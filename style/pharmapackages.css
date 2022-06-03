@@ -3,12 +3,13 @@ Sidebar
 -----------------------*/
 
 #pharmapackages {
-    background-color: white;
+    background-color: #F1F1F1;
     color: #002171;
 }
 
 section[data-testid="stSidebar"] {
     margin-top: 75px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 section[data-testid="stSidebar"] > :first-child > :last-child  {
@@ -19,6 +20,9 @@ section[data-testid="stSidebar"] > :last-child {
     top: 85px;
 }
 
+.stTextInput div[data-baseweb="input"] {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
 
 
 /* ----------------------
@@ -72,7 +76,7 @@ Content
   
   .row_1 p {
     color: gray;
-    font-size: 0.8em;
+    font-size: 0.85em;
   }
   
   .icon_proj {
@@ -83,7 +87,7 @@ Content
   }
   
   .proj_description {
-      max-height: 130px;
+      max-height: 137px;
       overflow: hidden;
       padding-right: 15px;
       margin-bottom: 15px;

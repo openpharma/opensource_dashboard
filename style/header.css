@@ -8,6 +8,7 @@
     top: 0rem;
     height: 75px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    
 }
 
 .navbar-nav,
@@ -21,7 +22,7 @@
     color: white; /* blue colors for links too */
     text-decoration: inherit;
     position: relative;
-    top: -13px;
+    top: -11.5px;
     padding: 28px 20px 28px 20px;
 }
 
@@ -32,6 +33,6 @@
 }
 
 .navbar .navitem:hover {
-    background-color: white;
+    background-color: #F1F1F1;
     color: #002171;
 }
