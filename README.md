@@ -1,6 +1,6 @@
 # opensource_dashboard
 
-# Deployment on Heroku - (test version)
+## Deployment on Heroku - (test version)
 
 https://open-pharma.herokuapp.com/
 
