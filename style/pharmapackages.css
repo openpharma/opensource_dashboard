@@ -3,8 +3,8 @@ Sidebar
 -----------------------*/
 
 #pharmapackages {
-    background-color: #F1F1F1;
-    color: #002171;
+  background-color: white;
+  color: #002171;
 }
 
 section[data-testid="stSidebar"] {
@@ -12,14 +12,14 @@ section[data-testid="stSidebar"] {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
+section[data-testid="stSidebar"] {
+  margin-top: 75px;
+}
+
 section[data-testid="stSidebar"] > :first-child > :last-child  {
-    margin-top: -90px;
+  margin-top: -90px;
+  padding-bottom: 110px;
 }
-
-section[data-testid="stSidebar"] > :last-child {
-    top: 85px;
-}
-
 .stTextInput div[data-baseweb="input"] {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }

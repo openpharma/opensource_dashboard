@@ -65,7 +65,7 @@ def filter_df(
 
     return df.reset_index(drop=True)
 
-def fillin_cards(df: pd.DataFrame) -> List[str]:
+def display_data(df: pd.DataFrame) -> List[str]:
     l_data = []
     nb_cards = 20
     pack_img = df['icon_package'][:nb_cards].tolist()

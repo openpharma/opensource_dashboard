@@ -23,3 +23,17 @@ def filter_df(df: pd.DataFrame,
     rstr = '|'.join(list_search)
     df = df[df['title'].str.lower().str.contains(rstr) | df['description'].str.lower().str.contains(rstr)]
     return df
+
+def display_data(df) -> List[str]:
+    l_data = []
+    nb_cards = 20
+    pack_img = df['icon_package'][:nb_cards].tolist()
+    pack_name = df['repo'][:nb_cards].tolist()
+    descri = df['description'][:nb_cards].tolist()
+    org = df['org'][:nb_cards].tolist()
+    contrib = df['Contributors'][:nb_cards].tolist()
+    last_commit = df['last_commit_d'][:nb_cards].tolist()
+    risk_metric = (5+df['risk_column'][:nb_cards]).tolist()
+    
+        
+    return l_data

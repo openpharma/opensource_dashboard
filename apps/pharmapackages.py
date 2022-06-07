@@ -78,7 +78,7 @@ def page_content():
 
     col1, col2 = st.columns([1,1])
     
-    l_components = df_pharmpack.fillin_cards(df_clean)
+    l_components = df_pharmpack.display_data(df_clean)
 
     if (len(l_components)>=1):
         with col1:

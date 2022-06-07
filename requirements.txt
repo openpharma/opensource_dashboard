@@ -13,6 +13,7 @@ certifi==2022.5.18.1
 cffi==1.15.0
 charset-normalizer==2.0.12
 click==8.0.4
+commonmark==0.9.1
 debugpy==1.6.0
 decorator==5.1.1
 defusedxml==0.7.1
@@ -69,6 +70,7 @@ pytz==2022.1
 pytz-deprecation-shim==0.1.0.post0
 pyzmq==23.0.0
 requests==2.27.1
+rich==12.4.4
 semver==2.13.0
 Send2Trash==1.8.0
 simplejson==3.17.6
@@ -76,8 +78,7 @@ six==1.16.0
 smmap==5.0.0
 soupsieve==2.3.2.post1
 stack-data==0.2.0
-streamlit==1.9.2
-streamlit-aggrid==0.2.3.post2
+streamlit==1.10.0
 terminado==0.15.0
 tinycss2==1.1.1
 toml==0.10.2

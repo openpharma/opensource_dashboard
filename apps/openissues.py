@@ -1,7 +1,4 @@
 import streamlit as st
-from st_aggrid import AgGrid
-from st_aggrid.grid_options_builder import GridOptionsBuilder
-from st_aggrid.shared import GridUpdateMode, JsCode
 from python_functions import df_openissues
 import pandas as pd
 
@@ -56,18 +53,6 @@ def page_content():
 
     df_issue = df_openissues.filter_df(df, label_openissues, days_openissues, nb_comments, label_creator, search_bar)
 
-    gd = GridOptionsBuilder.from_dataframe(df_issue)
-    gd.configure_pagination(enabled=True)
-    gd.configure_default_column(min_column_width=5, resizable=True, filterable=True, sortable=True, editable=False, groupable=False)
-    gd.configure_auto_height(autoHeight=True)
-    gridoptions = gd.build()
-
-    AgGrid(df_issue[["label", "title", "full_name", "issue_number", "comments", "author", "days_no_activity", "body"]],
-        gridoptions=gridoptions,
-        height=500,
-        theme = "material",
-        width=1000,
-        allow_unsafe_jscode=True
-    )
-
+    st.dataframe(df_issue)
+    
     
