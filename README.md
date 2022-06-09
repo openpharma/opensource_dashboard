@@ -1,8 +1,9 @@
 # opensource_dashboard
 
-## Deployment on Heroku - (test version)
+## Deployment on Heroku - Test
 
 https://open-pharma.herokuapp.com/
+
 
 ## Aims
 
@@ -12,3 +13,5 @@ https://open-pharma.herokuapp.com/
 * Help people discover where they could contribute to packages (e.g. open issues)
 
 The following project is trying to define the final scope: https://github.com/openpharma/opensource_dashboard/projects/1
+
+
