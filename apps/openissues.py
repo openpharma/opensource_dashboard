@@ -2,6 +2,7 @@ import streamlit as st
 from python_functions import df_openissues
 import pandas as pd
 
+
 def page_content():
 
     PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/help.csv'
@@ -52,7 +53,11 @@ def page_content():
 
 
     df_issue = df_openissues.filter_df(df, label_openissues, days_openissues, nb_comments, label_creator, search_bar)
-
-    st.dataframe(df_issue)
+    #st.dataframe(df_issue)
+    l_components = df_openissues.display_data(df_issue)
     
-    
+    if (len(l_components)>=1):
+        for i in range(0, len(l_components)):
+            st.markdown(l_components[i], unsafe_allow_html=True)
+    else:
+        st.markdown("We don't have an open issue matching your request")

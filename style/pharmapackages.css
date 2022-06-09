@@ -1,9 +1,18 @@
 /* ----------------------
+Remove automatic Streamlit hover link
+-----------------------*/
+
+.h2_remove_hover div :not(span) {
+  display: none;
+}
+
+
+/* ----------------------
 Sidebar
 -----------------------*/
 
 #pharmapackages {
-  background-color: white;
+  background-color: #F1F1F1;
   color: #002171;
 }
 
@@ -57,7 +66,7 @@ Content
   .icon_package_card {
     -ms-flex: 0 0 80px;
       flex: 0 0 80px;
-      padding-right: 0px;
+      padding: 4px 3px 0px 15px;
   }
   
   @media (max-width: 690px) {
@@ -71,7 +80,7 @@ Content
     font-size: 1.5em;
     text-align: right;
     margin: 0;
-    padding: 0;
+    padding: 5px 5px 0px 0px;
     font-weight: 600;
   }
 
@@ -88,7 +97,11 @@ Content
     position: relative;
     top: -5px;
     margin: 0;
-    padding: 0;
+    padding: 0px 0px 0px 5px;
+  }
+
+  .icon_proj img {
+    margin-left: 6px;
   }
   
   .proj_description {
@@ -96,6 +109,7 @@ Content
       overflow: hidden;
       padding-right: 15px;
       margin-bottom: 15px;
+      text-align: justify;
   }
 
   .row_2 {

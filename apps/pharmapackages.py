@@ -3,7 +3,6 @@ from python_functions import df_pharmpack
 
 
 def page_content():
-
     """
     
     Read Data
@@ -90,3 +89,7 @@ def page_content():
                 st.markdown(l_components[i], unsafe_allow_html=True)
     else:
         st.markdown("We don't have a package matching your request")
+
+
+    
+    

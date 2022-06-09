@@ -1,9 +1,17 @@
 /* ----------------------
+Remove automatic Streamlit hover link
+-----------------------*/
+
+.h2_remove_hover div :not(span, u) {
+  display: none;
+}
+
+/* ----------------------
 Sidebar
 -----------------------*/
 
 #openissues {
-    background-color: white;
+    background-color: #F1F1F1;
     color: #002171;
 }
 
@@ -30,7 +38,7 @@ Content
 -----------------------*/
 
 /* remove upper space on content page */
-iframe:not([title="st_aggrid.agGrid"]) {
+iframe:not( :last-child) {
     height: 0rem;
 }
 
@@ -56,3 +64,165 @@ iframe:not([title="st_aggrid.agGrid"]) {
   .grid-wrapper {
     flex: 1 1 auto;
   }
+
+/* ----------------------
+Card Open issued - BIG
+-----------------------*/
+
+/* ----------------------
+Package name
+-----------------------*/
+
+.package_name {
+background: #002171;
+padding: 7px 0px 7px 20px;
+border-radius: 15px 15px 0px 0px;
+}
+
+.package_name h2 {
+color: white;
+margin:0;
+padding: 0;
+margin-left: 15px;
+font-size: 0.9em;
+}
+
+/* ----------------------
+Card Open Issues
+-----------------------*/
+
+
+.card {
+border-radius: 0px 15px 15px 15px;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+margin-bottom: 20px;
+}
+
+.open_issue_icon {
+width: 100px;
+padding-right: 0px;
+}
+
+.big_circle {
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #4AA356;
+  border-radius: 35px;
+}
+
+.small_circle {
+  margin: 12px;
+  background: #4AA356;
+  width: 16px;
+  height: 16px;
+  border-radius: 10px;
+}
+
+.author_status {
+  padding: 8px 0px 0px 0px;
+  font-size: 0.7em;
+  color: #999999;
+}
+
+.title_tag_issue {
+  margin: 0;
+}
+.title_tag_issue h2 {
+font-size: 0.8em;
+  font-weight: 600;
+}
+
+.title_tag_issue p {
+  margin: 0px 0px 5px 15px;
+}
+
+.badge {
+  padding: 5px 10px 5px 10px;
+  font-size: 0.7em;
+  margin: 0px 0px 5px -10px;
+}
+
+.title_tag_issue h2 {
+  padding: 0;
+  font-size: 1.2em;
+  margin: 0px 0px 10px 0px;
+}
+
+/* ----------------------
+Pills reaction github
+-----------------------*/
+
+.pills {
+  z-index: 999999999999;
+  background: #F5F5F5;
+  border: 1px solid #D8D8D8;
+  padding: 2px 10px 2px 10px;
+  border-radius: 20px;
+  margin: 0px 10px 10px 0px;
+}
+
+.pills p {
+  margin: 0;
+  font-size: 0.7em;
+  font-weight: 500;
+}
+
+.pills img {
+  margin: 0;
+  margin-top: 1px;
+  margin-right: 10px;
+}
+
+.pills:hover {
+  background: #E6E6E6;
+}
+
+
+/* ----------------------
+Button Collapse
+-----------------------*/
+
+.display_more {
+  position: relative;
+  top: 35px;
+  margin-top: -35px;
+}
+
+
+.btn {
+position: relative;
+cursor: pointer;
+float: right;
+background: #002171;
+top: -19px;
+right: 10px;
+border-radius: 500px;
+font-weight: 600;
+font-size: 0.8em;
+transform: rotate(90deg);
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.btn:hover {
+background: #002171;
+}
+
+.display_more[open] summary {
+transform: rotate(-90deg);
+}
+
+
+/* ----------------------
+Collapse Content
+-----------------------*/
+
+.display_collapse {
+  margin-top: -2px;
+  margin-bottom: 20px;
+  padding: 20px 0px 15px 25px;
+  border-top: 1px solid #C9C9C9;
+}
+
+  
