@@ -1,8 +1,8 @@
 # opensource_dashboard
 
-# Fast deployement streamlit cloud - (test version)
+## Deployment on Heroku - (test version)
 
-https://share.streamlit.io/openpharma/opensource_dashboard/main/app.py
+https://open-pharma.herokuapp.com/
 
 ## Aims
 
