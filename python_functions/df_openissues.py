@@ -29,7 +29,7 @@ def display_data(df) -> List[str]:
     nb_cards = 5
     pack_name = df['full_name'][:nb_cards].tolist()
     if (len(pack_name)>=1):
-        for i in range(0, 2):
+        for i in range(0, 3):
             components = rf"""                    
                     <div class="row">
                         <div class="col-sm-3 align-items-center d-inline-flex package_name">
