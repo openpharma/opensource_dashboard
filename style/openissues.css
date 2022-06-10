@@ -99,7 +99,7 @@ margin-bottom: 20px;
 }
 
 .open_issue_icon {
-width: 100px;
+width: 90px;
 padding-right: 0px;
 }
 
@@ -121,30 +121,33 @@ padding-right: 0px;
 }
 
 .author_status {
-  padding: 8px 0px 0px 0px;
-  font-size: 0.7em;
+  padding: 8px 0px 3px 0px;
+  margin: 0;
+  font-size: 0.65em;
   color: #999999;
 }
 
 .title_tag_issue {
+  padding: 0;
   margin: 0;
 }
-.title_tag_issue h2 {
+.title_open_issue {
 font-size: 0.8em;
   font-weight: 600;
 }
 
-.title_tag_issue p {
-  margin: 0px 0px 5px 15px;
+.pill_tag {
+  margin: 0px 0px 10px 20px;
 }
 
 .badge {
-  padding: 5px 10px 5px 10px;
+  padding: 3px 8px 4px 8px;
   font-size: 0.7em;
+  font-weight: 400;
   margin: 0px 0px 5px -10px;
 }
 
-.title_tag_issue h2 {
+.title_open_issue {
   padding: 0;
   font-size: 1.2em;
   margin: 0px 0px 10px 0px;
@@ -225,4 +228,31 @@ Collapse Content
   border-top: 1px solid #C9C9C9;
 }
 
-  
+
+/* ----------------------
+Markdown RENDER modification
+-----------------------*/
+
+.display_collapse img {
+  width: 80%;
+}
+
+.display_collapse h1 div :not(span),
+.display_collapse h2 div :not(span),
+.display_collapse h3 div :not(span),
+.display_collapse h4 div :not(span),
+.display_collapse h5 div :not(span) {
+  display: none;
+}
+
+.display_collapse h1 {
+  font-size: 2em;
+}
+
+.display_collapse h2 {
+  font-size: 1.75em;
+}
+
+.display_collapse h3 {
+  font-size: 1.5em;
+}

@@ -1,11 +1,15 @@
 import pandas as pd
 from typing import List
 import streamlit as st
+import markdown
 
 
 @st.cache(suppress_st_warning=True)
 def read_data_openissues(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
+    df_icon = pd.read_csv('temporary/icon_package.csv')
+    df = df.merge(df_icon, how='left', on='full_name', suffixes=('', '_'))
+    df['icon_package'] = df['icon_package'].fillna("https://cran.r-project.org/Rlogo.svg")
     return df
 
 
@@ -17,7 +21,7 @@ def filter_df(df: pd.DataFrame,
     search_bar: str=''
     ) -> pd.DataFrame:
 
-    df = df[(df['label'].isin(label)) & (df['days_no_activity'] >= day_no_activity) & (df['comments'] >= nb_comments) & (df['author_status'].isin(author_status))]
+    df = df[(df['label'].isin(label)) & (df['days_no_activity'] <= day_no_activity) & (df['comments'] >= nb_comments) & (df['author_status'].isin(author_status))]
 
     list_search = search_bar.lower().split()
     rstr = '|'.join(list_search)
@@ -26,17 +30,26 @@ def filter_df(df: pd.DataFrame,
 
 def display_data(df) -> List[str]:
     l_data = []
-    nb_cards = 5
+    nb_cards = 30
     pack_name = df['full_name'][:nb_cards].tolist()
+    pack_icon = df['icon_package'][:nb_cards].tolist()
+    issue_day = df['days_no_activity'][:nb_cards].tolist()
+    issue_author = df['author'][:nb_cards].tolist()
+    issue_author_status = df['author_status'][:nb_cards].tolist()
+    issue_title = df['title'][:nb_cards].tolist()
+    issue_label = df['label'][:nb_cards].tolist()
+    issue_comments = df['comments'][:nb_cards].tolist()
+    issue_body = df['body'][:nb_cards].tolist()
+    
     if (len(pack_name)>=1):
-        for i in range(0, 3):
+        for i in range(0, len(pack_name)):
             components = rf"""                    
                     <div class="row">
-                        <div class="col-sm-3 align-items-center d-inline-flex package_name">
-                            <img src="https://avatars.githubusercontent.com/u/8436743?s=200&v=4" alt="" height=16/>
-                            <h2 class="h2_remove_hover">rTables</h2>
+                        <div class="col-sm-auto align-items-center d-inline-flex package_name">
+                            <img src="{pack_icon[i]}" alt="" height=16/>
+                            <h2 class="h2_remove_hover">{pack_name[i]}</h2>
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-auto">
                             <!-- Nothing inside -->
                         </div>
                         <div class="card">
@@ -48,19 +61,19 @@ def display_data(df) -> List[str]:
                                     </div>
                                 </div>
                                 <div class="col-sm-10">
-                                    <h3 class="author_status h2_remove_hover"><u>Author</u> : sbrockhaus - MEMBER</h3>
+                                    <h3 class="author_status h2_remove_hover"><u>Last active :</u> {issue_day[i]} d | <u>Author</u> : {issue_author[i]} - {issue_author_status[i]}</h3>
                                     <div class="title_tag_issue align-items-center d-inline-flex">
-                                        <h2 class="h2_remove_hover">Split up the code that calculates data for component plots</h2>
-                                        <p><span class="badge rounded-pill text-bg-primary">Good first issue</span></p>
+                                        <p class="h2_remove_hover title_open_issue">{issue_title[i]}</p>
+                                        <p class="pill_tag"><span class="badge rounded-pill text-bg-primary">{issue_label[i]}</span></p>
                                     </div>
                                     <div class="list_metrics">
                                         <div class="pills d-inline-flex">
                                             <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" alt="" height=13>
-                                            <p>40</p>
+                                            <p>?</p>
                                         </div>
                                         <div class="pills d-inline-flex">
                                             <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ac.png" alt="" height=13>
-                                            <p>8</p>
+                                            <p>{issue_comments[i]}</p>
                                         </div>
                                         <div class="pills d-inline-flex">
                                             <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f511.png" alt="" height=13>
@@ -71,14 +84,7 @@ def display_data(df) -> List[str]:
                             </div>
                             <details class="display_more">
                                 <summary class="btn btn-primary">></summary>
-                                <div class="display_collapse">
-                                    <p>Oh, hello</p>
-                                    <p>Oh, hello</p>
-                                    <p>Oh, hello</p>
-                                    <p>Oh, hello</p>
-                                    <p>Oh, hello</p>
-                                    <p>Oh, hello</p>
-                                </div>
+                                <div class="display_collapse">{markdown.markdown(str(issue_body[i]), extensions=['extra'])}</div>
                             </details>
                         </div>
                     </div>

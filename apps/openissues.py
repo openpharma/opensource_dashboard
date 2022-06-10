@@ -22,12 +22,12 @@ def page_content():
             default=['good first issue', 'help wanted', 'discussion', 'good first issue, help wanted', 'bug']
         )
 
-        st.header("Days since inactivity")
+        st.header("Days since last active")
         days_openissues = st.slider(
             label="Choose a value",
             min_value=0, 
-            max_value=100, 
-            value=0
+            max_value=200, 
+            value=200
         )
         
         st.header("Min # of comments")
@@ -53,6 +53,7 @@ def page_content():
 
 
     df_issue = df_openissues.filter_df(df, label_openissues, days_openissues, nb_comments, label_creator, search_bar)
+    df_issue = df_issue.sort_values(by=['days_no_activity'], ascending=True, ignore_index=True)
     #st.dataframe(df_issue)
     l_components = df_openissues.display_data(df_issue)
     
