@@ -7,9 +7,6 @@ import markdown
 @st.cache(suppress_st_warning=True)
 def read_data_openissues(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
-    df_icon = pd.read_csv('temporary/icon_package.csv')
-    df = df.merge(df_icon, how='left', on='full_name', suffixes=('', '_'))
-    df['icon_package'] = df['icon_package'].fillna("https://cran.r-project.org/Rlogo.svg")
     return df
 
 
@@ -25,7 +22,7 @@ def filter_df(df: pd.DataFrame,
 
     list_search = search_bar.lower().split()
     rstr = '|'.join(list_search)
-    df = df[df['title'].str.lower().str.contains(rstr) | df['description'].str.lower().str.contains(rstr)]
+    df = df[df['title'].str.lower().str.contains(rstr) | df['body'].str.lower().str.contains(rstr)]
     return df
 
 def display_data(df) -> List[str]:

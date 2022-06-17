@@ -1,11 +1,10 @@
 import streamlit as st
 from python_functions import df_openissues
-import pandas as pd
 
 
 def page_content():
 
-    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/help.csv'
+    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/help_clean.csv'
     df = df_openissues.read_data_openissues(PATH)
 
 
