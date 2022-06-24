@@ -13,6 +13,6 @@ def page_content():
 
     st.title("Leaderboard")
 
-    st.markdown(df[:100].to_html(index=False, escape=False, formatters=dict(avatar=df_leaderboard.path_to_image_html)), unsafe_allow_html=True)
+    st.markdown(df[:300].to_html(index=False, escape=False, formatters=dict(avatar=df_leaderboard.path_to_image_html)), unsafe_allow_html=True)
     
  
