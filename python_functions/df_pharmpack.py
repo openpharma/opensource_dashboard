@@ -33,13 +33,14 @@ def filter_df(
 def display_data(df: pd.DataFrame) -> List[str]:
     l_data = []
     nb_cards = 20
+    df['last_commit_d'] = df['last_commit_d'].astype('Int64')
     pack_img = df['icon_package'][:nb_cards].tolist()
     pack_name = df['repo'][:nb_cards].tolist()
     descri = df['description'][:nb_cards].tolist()
     org = df['org'][:nb_cards].tolist()
     contrib = df['Contributors'][:nb_cards].tolist()
     last_commit = df['last_commit_d'][:nb_cards].tolist()
-    risk_metric = (5+df['risk_column'][:nb_cards]).tolist()
+    risk_metric = df['risk_column'][:nb_cards].tolist()
     risk_color = ['bg-success' if (x >=  53.0) else 'bg-danger' if (x <= 21.0) else 'bg-warning' for x in risk_metric]
     if (len(pack_name)>=1):
         for i in range(0, len(pack_name)):
