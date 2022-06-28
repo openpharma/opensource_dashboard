@@ -18,7 +18,7 @@ def filter_df(df: pd.DataFrame,
     search_bar: str=''
     ) -> pd.DataFrame:
 
-    df = df[(df['label'].isin(label)) & (df['days_no_activity'] <= day_no_activity) & (df['comments'] >= nb_comments) & (df['author_status'].isin(author_status))]
+    df = df[(df['label'].isin(label)) & (df['days_no_activity'] >= day_no_activity[0]) & (df['days_no_activity'] <= day_no_activity[1]) & (df['comments'] >= nb_comments[0]) & (df['comments'] <= nb_comments[1]) & (df['author_status'].isin(author_status))]
 
     list_search = search_bar.lower().split()
     rstr = '|'.join(list_search)

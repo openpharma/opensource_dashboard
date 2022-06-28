@@ -32,12 +32,12 @@ def page_content():
             default=['ctv', 'filing-tools', 'filing-tools, tlg', 'omics', 'clinical-statistics', 'tlg', 'filing-tools, gh-action', 'pkpd', 'synthetic-data']
         )
 
-        st.header("Min # of contributions")
+        st.header("# of contributors")
         min_nb_contrib = st.slider(
-            label="Choose a value",
+            label="Choose a range of values",
             min_value=0, 
-            max_value=30, 
-            value=0
+            max_value=150, 
+            value=(0, 150)
         )
         st.header("Language")
         prog_language = st.radio(
@@ -50,7 +50,7 @@ def page_content():
             label="0 = Low maintainability ; 100 = High maintainability",
             min_value=0,
             max_value=100, 
-            value=0
+            value=(0, 100)
         )
 
         st.header("License")

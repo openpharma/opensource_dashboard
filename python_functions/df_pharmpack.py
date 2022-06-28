@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import List
 import streamlit as st
+import re
 
 
 @st.cache(suppress_st_warning=True)
@@ -8,16 +9,23 @@ def read_data_repos(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
 
+# as per recommendation from @freylis, compile once only
+
+def clean_html(raw_html: str):
+    CLEANR = re.compile('<.*?>') 
+    cleantext = re.sub(CLEANR, '', raw_html)
+    return cleantext
+
 def filter_df(
     df: pd.DataFrame,
     categories: List[str]=None,
-    nb_contribs: int=0,
+    nb_contribs: tuple=(0,150),
     language: str='All',
     risk_metrics: int=0,
     license: str='All',
     search_bar: str=''
     ) -> pd.DataFrame:
-    df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs) & (df['risk_column'] >= risk_metrics)]
+    df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
 
     if(license != 'All'):
         df = df[df['license_clean'] == license]
@@ -40,12 +48,13 @@ def display_data(df: pd.DataFrame) -> List[str]:
     link_github = ("https://github.com/"+df['full_name'])[:nb_cards].tolist()
     link_cran = ("https://cran.r-project.org/web/packages/"+df['repo']+"/index.html")[:nb_cards].tolist()
     pack_name = df['repo'][:nb_cards].tolist()
-    descri = df['description'][:nb_cards].tolist()
+    descri = [clean_html(x) for x in df['description'][:nb_cards].tolist()]
     org = df['org'][:nb_cards].tolist()
     contrib = df['Contributors'][:nb_cards].tolist()
     last_commit = df['last_commit_d'][:nb_cards].tolist()
     risk_metric = df['risk_column'][:nb_cards].tolist()
-    risk_color = ['bg-success' if (x >=  53.0) else 'bg-danger' if (x <= 21.0) else 'bg-warning' for x in risk_metric]
+    risk_color = ['bg-success' if (x >=  53) else 'bg-warning' if (x >= 21) else 'bg-danger' for x in risk_metric]
+    risk_width_color = ["auto" if (x >=  53) else "15px" if (x >= 21) else "15px" for x in risk_metric]
     if (len(pack_name)>=1):
         for i in range(0, len(pack_name)):
             
@@ -78,15 +87,16 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                 </div>
                                 <div class="row row_2 border-top pb-0">
                                 <div class="col-xl-3 text-center align-top">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person" viewBox="0 0 15 15">
-                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                        </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building" viewBox="0 0 15 15">
+  <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
+  <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
+</svg>
                                     <p class="mt-2">
                                     {org[i]}
                                     </p>
                                 </div>
                                 <div class="col-xl-3 text-center align-top">
-                                    <h2 class="h2_remove_hover">+{contrib[i]}</h2>
+                                    <h2 class="h2_remove_hover">{contrib[i]}</h2>
                                     <p>Contributors</p>
                                 </div>
                                 <div class="col-xl-3 text-center align-top">
@@ -96,8 +106,8 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                 <div class="col-xl-3 text-center align-top">
                                     <p>Reliability</p>
                                     <div class="progress">
-                                        <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {risk_metric[i]}%" role="progressbar" aria-valuenow="{risk_metric[i]}" aria-valuemin="0" aria-valuemax="100">
-                                        <p>{int(risk_metric[i])}</p>
+                                        <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {int(risk_metric[i])}%" role="progressbar" aria-valuenow="{risk_metric[i]}" aria-valuemin="0" aria-valuemax="100">
+                                        <p style="width: {risk_width_color[i]};">{int(risk_metric[i])}</p>
                                         </div>
                                     </div>
                                 </div>

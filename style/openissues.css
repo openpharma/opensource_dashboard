@@ -16,12 +16,12 @@ Sidebar
 }
 
 section[data-testid="stSidebar"] {
-    margin-top: 75px;
+    margin-top: 48px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 section[data-testid="stSidebar"] > :last-child {
-    top: 85px;
+    top: 60px;
   }
 
 section[data-testid="stSidebar"] > :first-child > :last-child  {
@@ -43,7 +43,7 @@ iframe:not( :last-child) {
 }
 
 .appview-container > :last-child {
-    margin-top: -80px;
+    margin-top: -110px;
 }
 
 .stTextInput {

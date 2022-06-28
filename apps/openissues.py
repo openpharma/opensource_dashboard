@@ -21,20 +21,20 @@ def page_content():
             default=['good first issue', 'help wanted', 'discussion', 'good first issue, help wanted', 'bug']
         )
 
-        st.header("Days since last active")
+        st.header("Days since last comment")
         days_openissues = st.slider(
-            label="Choose a value",
+            label="Choose a range of values",
             min_value=0, 
             max_value=200, 
-            value=200
+            value=(0,200)
         )
         
-        st.header("Min # of comments")
+        st.header("# of comments")
         nb_comments = st.slider(
-            label="Choose a value ",
+            label="Choose a range of values",
             min_value=0, 
-            max_value=10,
-            value=0
+            max_value=30,
+            value=(0, 30)
         )
 
         st.header("Author status")
