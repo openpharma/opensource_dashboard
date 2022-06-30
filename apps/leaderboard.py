@@ -12,7 +12,7 @@ def page_content():
     #df = df_leaderboard.filter_df(df)
 
     st.title("Leaderboard")
-
+    st.dataframe(df)
     #st.markdown(df[:300].to_html(index=False, escape=False, formatters=dict(avatar=df_leaderboard.path_to_image_html)), unsafe_allow_html=True)
     
  
