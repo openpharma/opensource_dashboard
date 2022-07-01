@@ -8,11 +8,17 @@ def page_content():
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/people_clean.csv'
-    df = df_leaderboard.read_data_leaderboard(PATH)
+    df_lead = df_leaderboard.read_data_leaderboard(PATH)
     #df = df_leaderboard.filter_df(df)
 
     st.title("Leaderboard")
-    st.dataframe(df)
+    l_components = df_leaderboard.display_data(df_lead)
+    col1, col2 = st.columns(2)
+    with col1:
+        for i in range(0, 3):
+            st.markdown(l_components[i], unsafe_allow_html=True)
+    with col2:
+        st.write("general leaderboard comming soon ...")
     #st.markdown(df[:300].to_html(index=False, escape=False, formatters=dict(avatar=df_leaderboard.path_to_image_html)), unsafe_allow_html=True)
     
  

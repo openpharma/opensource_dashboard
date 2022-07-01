@@ -11,16 +11,139 @@ iframe:not( :last-child) {
 }
 
 .appview-container > :last-child {
-    margin-top: -80px;
+    margin-top: -110px;
 }
 
-table {
-    background-color: white;
-    border-top: 0px solid white;
+.h2_remove_hover div :not(span) {
+    display: none;
+  }
+
+/* ----------------------
+Content
+-----------------------*/
+
+/* ----------------------
+Leaderboard by categories
+-----------------------*/
+dfn {
+    font-size: 20px;
+    padding: 0 0.4em;
+    cursor: help;
+    font-style: normal;
+    position: relative;
+    margin-top: 10px;
+  }
+  dfn::after {
+    content: attr(data-info);
+    display: inline;
+    position: absolute;
+    top: 22px; left: -45px;
+    opacity: 0;
+    width: 200px;
+    font-size: 15px;
+    line-height: 1.5em;
+    padding: 0.5em 0.8em;
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    pointer-events: none; /* This prevents the box from apearing when hovered. */
+    transition: opacity 250ms, top 250ms;
+  }
+  dfn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 12px; left: 50px;
+    opacity: 0;
+    width: 0; height: 0;
+    border: solid transparent 5px;
+    border-bottom-color: rgba(0,0,0,0.8);
+    transition: opacity 250ms, top 250ms;
+  }
+  dfn:hover {z-index: 1000;} /* Keeps the info boxes on top of other elements */
+  dfn:hover::after,
+  dfn:hover::before {opacity: 1;}
+  dfn:hover::after {top: 30px;}
+  dfn:hover::before {top: 20px;}
+  
+  .row_card {
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    border-radius: 30px;
-}
+    margin: 0px;
+    border-radius: 20px 20px 20px 20px;
+    background: white;
+    margin-bottom: 20px; 
+  }
 
-table img {
-    border-radius: 100px;
-}
+  .col_left_icon,
+  .col_rank {
+    display: inline-block;
+  }
+
+  
+  .col_left_icon {
+    background: #002171;
+    color: white;
+    border-radius: 20px 0px 0px 20px;
+    width: 100px;
+    text-align: center;
+  }
+
+  .col_left_icon h2 {
+      font-size: 1.3em;
+      margin: 0;
+      padding: 0;
+  }
+  
+  .icon_metric {
+    font-size: 55px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  
+  .col_left_icon p,
+  .col_left_icon h2,
+  .col_left_icon dfn {
+    display: block;
+  }
+  
+  .table_top3 {
+    vertical-align: middle;
+    margin: 2px;
+  }
+
+  .rank_number {
+    font-size: 25px;
+    font-weight: 800;
+  }
+  
+  .name_ranking {
+    font-size: 1.1em;
+    font-weight: 600;
+    padding-right: 7px;
+  }
+  
+  .table_top3 td {
+    border: 1px solid white;
+  }
+
+  td a,
+  td a:hover {
+      position: relative;
+      top: -2px;
+      text-decoration: none;
+  }
+  
+  .border_tr_rank td {
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  .table_top3 img {
+      border-radius: 30px;
+  }
+
+  .details_val_metric {
+      color: gray;
+      font-size: 0.65em;
+      position: relative;
+      top: -5px;
+  }

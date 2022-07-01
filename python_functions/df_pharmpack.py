@@ -58,7 +58,7 @@ def display_data(df: pd.DataFrame) -> List[str]:
     if (len(pack_name)>=1):
         for i in range(0, len(pack_name)):
             
-            components = rf'''
+            components = rf"""
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
@@ -114,7 +114,7 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                 </div>
                             </div>
                             </div>
-                        </div>'''
+                        </div>"""
             l_data.append(components)
     return l_data
 
