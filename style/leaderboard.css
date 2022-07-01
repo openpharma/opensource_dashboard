@@ -37,7 +37,7 @@ dfn {
     content: attr(data-info);
     display: inline;
     position: absolute;
-    top: 22px; left: -45px;
+    top: 22px; left: -60px;
     opacity: 0;
     width: 200px;
     font-size: 15px;
@@ -52,7 +52,7 @@ dfn {
     content: '';
     display: block;
     position: absolute;
-    top: 12px; left: 50px;
+    top: 12px; left: 33px;
     opacity: 0;
     width: 0; height: 0;
     border: solid transparent 5px;

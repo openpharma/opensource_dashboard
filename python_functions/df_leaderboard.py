@@ -45,13 +45,14 @@ def display_data(df)-> str:
         "text": ["{} comments | {} first replies | {} reactions".format(df_maintainer["#comments_self_maintainer"][i].astype(int), df_maintainer["#first_comments_self_maintainer"][i].astype(int), df_maintainer["#reactions_self_maintainer"][i].astype(int)) for i in range(0,3)]
     }
     l_users = [coder_dict, altruist_dict, maintainer_dict]
+    l_metrics_info = ["The \"Best coder\" metric rewards the most active developers on R packages (related to the pharmaceutical industry). The metric takes into account the number of involvement in R packages and the number of commits."]
     for i in range(0,3):
         components = rf"""
             <div class="row row_card">
                 <div class="sidebar col_left_icon d-inline">
                     <p class="icon_metric">{l_icon_metric[i]}</p>
                     <h2 class="h2_remove_hover">{l_title_metric[i]}</h2>
-                    <dfn data-info="JavaScript is the programming language of HTML and the Web.">&#x24D8</dfn>
+                    <dfn data-info="JavaScript is the programming language of HTML and the Web">&#x24D8</dfn>
                 </div>
                 <div class="col col_rank d-flex aligns-items-center">
                     <table class="table table_top3">
