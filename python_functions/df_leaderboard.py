@@ -112,31 +112,30 @@ def display_data_overall(df: pd.DataFrame)-> str:
     df_overall = df.sort_values(by="overall_metric", ascending=False)[:20].reset_index(drop=True)[["author", "avatar", "coder_metric", "self_maintainer_metric", "altruist_metric", "overall_metric"]]
     for i in range(len(df_overall)): 
         cell_components += rf"""<tr>
-            <td style="width: 40px;"><img src="{df_overall["avatar"][i]}" alt="" width="40" /></td>
+            <td style="width: 40px;"><img src="{df_overall["avatar"][i]}" alt="" width="30" /></td>
             <td><span class="pseudo">{df_overall["author"][i]}</span></td>
             <td class="number_rank">{df_overall["coder_metric"][i]}</td>
             <td class="number_rank">{df_overall["altruist_metric"][i]}</td>
             <td class="number_rank">{df_overall["self_maintainer_metric"][i]}</td>
-            <td class="number_rank">{df_overall["overall_metric"][i]}</td>
+            <td class="number_rank"><strong>{df_overall["overall_metric"][i]}</strong></td>
             </tr>
         """
-    component = rf"""<div class="row row_global_lead">
-<div class="col col_rank d-flex aligns-items-center">
-<table class="table table_global_lead">
-<thead>
-<tr>
-<th scope="col">Pseudo</th>
-<th scope="col"></th>
-<th scope="col">Coder Score</th>
-<th scope="col">Altruist Score</th>
-<th scope="col">Self Pillar Score</th>
-<th scope="col">Overall Score</th>
-</tr>
-</thead>
-<tbody>
-{cell_components}
-</tbody>
-</table>
-</div>
-</div>"""
+    component = rf"""
+        <div class="row row_global_lead">
+            <div class="col col_rank d-flex aligns-items-center">
+            <table class="table table_global_lead">
+                <thead>
+                    <tr>
+                        <th scope="col">Pseudo</th>
+                        <th scope="col"></th>
+                        <th scope="col">Coder Score</th>
+                        <th scope="col">Altruist Score</th>
+                        <th scope="col">Self Pillar Score</th>
+                        <th scope="col">Overall Score</th>
+                    </tr>
+                </thead>
+                <tbody>{cell_components}</tbody>
+            </table>
+            </div>
+        </div>"""
     return component
