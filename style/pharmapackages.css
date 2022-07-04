@@ -140,3 +140,47 @@ Content
       font-size: 14px;
       margin-top: -2px;
   }
+
+/* ----------------------
+Info Button
+-----------------------*/
+
+
+dfn {
+  padding: 0 0.4em;
+  cursor: help;
+  font-style: normal;
+  position: relative;
+}
+dfn::after {
+  content: attr(data-info);
+  display: inline;
+  position: absolute;
+  top: 22px; left: -60px;
+  opacity: 0;
+  width: 200px;
+  font-size: 15px;
+  padding: 0.5em 0.8em;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  pointer-events: none; /* This prevents the box from apearing when hovered. */
+  transition: opacity 250ms, top 250ms;
+  font-size: 0.9em;
+}
+dfn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 12px; left: 33px;
+  opacity: 0;
+  width: 0; height: 0;
+  border: solid transparent 5px;
+  border-bottom-color: rgba(0,0,0,0.8);
+  transition: opacity 250ms, top 250ms;
+  font-size: 0.9em;
+}
+dfn:hover {z-index: 1000;} /* Keeps the info boxes on top of other elements */
+dfn:hover::after,
+dfn:hover::before {opacity: 1; font-size: 0.9em;}
+dfn:hover::after {top: 20px;}
+dfn:hover::before {top: 10px;}

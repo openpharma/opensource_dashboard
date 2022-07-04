@@ -26,7 +26,6 @@ Content
 Leaderboard by categories
 -----------------------*/
 dfn {
-    font-size: 20px;
     padding: 0 0.4em;
     cursor: help;
     font-style: normal;
@@ -47,6 +46,7 @@ dfn {
     color: #fff;
     pointer-events: none; /* This prevents the box from apearing when hovered. */
     transition: opacity 250ms, top 250ms;
+    font-size: 0.82em;
   }
   dfn::before {
     content: '';
@@ -58,10 +58,11 @@ dfn {
     border: solid transparent 5px;
     border-bottom-color: rgba(0,0,0,0.8);
     transition: opacity 250ms, top 250ms;
+    font-size: 0.82em;
   }
   dfn:hover {z-index: 1000;} /* Keeps the info boxes on top of other elements */
   dfn:hover::after,
-  dfn:hover::before {opacity: 1;}
+  dfn:hover::before {opacity: 1; font-size: 0.82em;}
   dfn:hover::after {top: 30px;}
   dfn:hover::before {top: 20px;}
   
