@@ -148,3 +148,52 @@ dfn {
       position: relative;
       top: -5px;
   }
+
+
+  /* ----------------------
+Overall Ranking Overall Ranking
+-----------------------*/
+
+  .row_global_lead {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin: 0px;
+  border-radius: 20px 20px 20px 20px;
+  background: white;  
+}
+
+.table_global_lead {
+  margin-top: 15px;
+  vertical-align: middle;
+}
+
+.table_global_lead td,
+.table_global_lead th {
+    border: 1px solid white;
+  }
+
+  .table_global_lead td,
+  .table_global_lead th {
+    border-bottom: 1px solid #d4d4d4;
+  }
+
+  .table_global_lead img {
+    border-radius: 30px;
+}
+
+thead th {
+  color: #969696;
+  font-size: 0.9em;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.pseudo {
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.number_rank {
+  text-align: center;
+}
+

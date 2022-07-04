@@ -22,7 +22,7 @@ def path_to_image_html(path):
     return '<img src="'+ path + '" width="30"/>'
 
 
-def display_data(df)-> str:
+def display_data_categories(df: pd.DataFrame)-> List[str]:
     l_data = []
     l_icon_metric = ["&#x1F468;&#x200D;&#x1F4BB;", "&#x1F450", "&#x1F9BE"]
     l_title_metric = ["Best coder", "Best altruist", "Best self pillar"]
@@ -105,3 +105,38 @@ def display_data(df)-> str:
             </div>"""
         l_data.append(components)
     return l_data
+
+
+def display_data_overall(df: pd.DataFrame)-> str:
+    cell_components = rf""""""
+    df_overall = df.sort_values(by="overall_metric", ascending=False)[:20].reset_index(drop=True)[["author", "avatar", "coder_metric", "self_maintainer_metric", "altruist_metric", "overall_metric"]]
+    for i in range(len(df_overall)): 
+        cell_components += rf"""<tr>
+            <td style="width: 40px;"><img src="{df_overall["avatar"][i]}" alt="" width="40" /></td>
+            <td><span class="pseudo">{df_overall["author"][i]}</span></td>
+            <td class="number_rank">{df_overall["coder_metric"][i]}</td>
+            <td class="number_rank">{df_overall["altruist_metric"][i]}</td>
+            <td class="number_rank">{df_overall["self_maintainer_metric"][i]}</td>
+            <td class="number_rank">{df_overall["overall_metric"][i]}</td>
+            </tr>
+        """
+    component = rf"""<div class="row row_global_lead">
+<div class="col col_rank d-flex aligns-items-center">
+<table class="table table_global_lead">
+<thead>
+<tr>
+<th scope="col">Pseudo</th>
+<th scope="col"></th>
+<th scope="col">Coder Score</th>
+<th scope="col">Altruist Score</th>
+<th scope="col">Self Pillar Score</th>
+<th scope="col">Overall Score</th>
+</tr>
+</thead>
+<tbody>
+{cell_components}
+</tbody>
+</table>
+</div>
+</div>"""
+    return component

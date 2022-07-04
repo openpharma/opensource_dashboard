@@ -12,13 +12,14 @@ def page_content():
     #df = df_leaderboard.filter_df(df)
 
     st.title("Leaderboard")
-    l_components = df_leaderboard.display_data(df_lead)
+    l_components = df_leaderboard.display_data_categories(df_lead)
+    l_global_leaderboard = df_leaderboard.display_data_overall(df_lead)
     col1, col2 = st.columns(2)
     with col1:
         for i in range(0, 3):
             st.markdown(l_components[i], unsafe_allow_html=True)
     with col2:
-        st.write("general leaderboard comming soon ...")
+        st.markdown(l_global_leaderboard, unsafe_allow_html=True)
     #st.markdown(df[:300].to_html(index=False, escape=False, formatters=dict(avatar=df_leaderboard.path_to_image_html)), unsafe_allow_html=True)
     
  
