@@ -1,14 +1,14 @@
 import streamlit as st
 from python_functions import df_pharmpack
 
-
 def page_content():
     """
     
     Read Data
 
     """
-    
+    embedder = SentenceTransformer(model_name_or_path='bert_model/all-MiniLM-L6-v2')
+    sentence_embeddings = embedder.encode("This is my request")
     PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv'
     df = df_pharmpack.read_data_repos(PATH)
 

@@ -65,10 +65,6 @@ def display_data(df) -> List[str]:
                                     </div>
                                     <div class="list_metrics">
                                         <div class="pills d-inline-flex">
-                                            <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f44d.png" alt="" height=13>
-                                            <p>?</p>
-                                        </div>
-                                        <div class="pills d-inline-flex">
                                             <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ac.png" alt="" height=13>
                                             <p>{issue_comments[i]}</p>
                                         </div>
