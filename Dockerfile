@@ -4,8 +4,12 @@ ENV PORT=8511
 
 EXPOSE $PORT
 
-COPY . /opensource_dashboard/
+WORKDIR /opensource_dashboard
 
-RUN pip install -r /opensource_dashboard/requirements.txt
+COPY . .
 
-CMD python3
+RUN pip install -r requirements.txt
+
+ENTRYPOINT ["streamlit", "run"]
+
+CMD ["app.py"]
