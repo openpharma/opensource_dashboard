@@ -1,10 +1,9 @@
-from sentence_transformers import SentenceTransformer, util
+"""from sentence_transformers import SentenceTransformer, util
 import torch
 import spacy
 
 
 def clean_data(X, is_lemma: bool=True, remove_stop: bool=True, is_alphabetic: bool=True):
-    """
     X : list of string such as ["sentence_1", "sentences_2", ... , "sentence_n"]
     Return : list of list of words 
     [
@@ -15,7 +14,6 @@ def clean_data(X, is_lemma: bool=True, remove_stop: bool=True, is_alphabetic: bo
         .
         ["word_1 word_2 ... word_n"] (sentence n cleaned)
     ]
-    """
     nlp = spacy.load("en_core_web_sm")
     # (is_lemma = True, remove_stop = True, is_alpha = False) = (1,1,0)
     hyperparam_tuple = (is_lemma, remove_stop, is_alphabetic)
@@ -84,3 +82,5 @@ class SearchEngine:
         top_results = torch.topk(cos_scores, k=topk)
         #Give the result with cosine similarity
         return top_results
+
+"""
