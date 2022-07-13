@@ -1,6 +1,6 @@
 FROM python:3.9
 
-ENV PORT=8511
+ENV PORT=8525
 
 EXPOSE $PORT
 
@@ -10,4 +10,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD ["streamlit", "run", "app.py"]
+CMD sh setup.sh && streamlit run app.py
