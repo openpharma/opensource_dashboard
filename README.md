@@ -4,6 +4,8 @@
 
 https://open-pharma.herokuapp.com/
 
+Using dockerfile
+
 
 ## Aims
 
