@@ -4,6 +4,14 @@ import streamlit as st
 import re
 
 
+PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
+
+
+@st.cache(suppress_st_warning=True)
+def read_pharmaverse_package(path: str) -> pd.DataFrame:
+    df = pd.read_csv(path)
+    return df
+
 @st.cache(suppress_st_warning=True)
 def read_data_repos(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
@@ -23,10 +31,20 @@ def filter_df(
     language: str='All',
     risk_metrics: int=0,
     license: str='All',
-    search_bar: str=''
+    search_bar: str='',
+    pharmaverse: bool=False
     ) -> pd.DataFrame:
-    df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
 
+    # General filter
+    df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
+    
+    # Filter on pharmaverse packages only
+    if(pharmaverse):
+        df_pharmaverse = read_pharmaverse_package(PATH_PHARMAVERSE)
+        l_pharmaverse = df_pharmaverse['full_name'].to_list()
+        df = df[df['full_name'].isin(l_pharmaverse)]
+
+    # Filter on license 
     if(license != 'All'):
         df = df[df['license_clean'] == license]
     if(language != 'All'):

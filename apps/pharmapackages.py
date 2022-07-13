@@ -24,6 +24,9 @@ def page_content():
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
         
+        st.header("Only packages from pharmaverse")
+        agree_pharmaverse = st.checkbox('Yes')
+
         st.header("Categories")
         categories_topics = st.multiselect(
             label='Select Multiple categories',
@@ -70,7 +73,7 @@ def page_content():
 
     """
 
-    df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law,search_bar)
+    df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law,search_bar, agree_pharmaverse)
     df_clean = df_clean.sort_values(by=['risk_column'], ascending=False, ignore_index=True)
     #st.dataframe(df_clean)
 
