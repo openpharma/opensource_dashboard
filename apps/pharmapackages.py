@@ -1,6 +1,7 @@
 import streamlit as st
 from python_functions import df_pharmpack
 from python_functions import search_engine
+import torch
 
 def page_content():
     """
@@ -68,9 +69,7 @@ def page_content():
         '',
         placeholder='Search a package...'
     )
-
-    search_engine.read_copy_tensor()
-    
+        
 
     """
 

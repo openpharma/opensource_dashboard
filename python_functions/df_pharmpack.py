@@ -2,6 +2,8 @@ import pandas as pd
 from typing import List
 import streamlit as st
 import re
+from python_functions import search_engine
+import torch
 
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
@@ -35,6 +37,11 @@ def filter_df(
     pharmaverse: bool=False
     ) -> pd.DataFrame:
 
+
+    if(search_bar!= ''):
+        search_engine.read_copy_tensor()
+        search_engine.SearchEngine().read_inference("inference_description.pt").fit(search_bar)
+        
     # General filter
     df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
     

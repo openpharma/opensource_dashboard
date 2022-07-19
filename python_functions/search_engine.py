@@ -1,19 +1,19 @@
 import streamlit as st
-"""from sentence_transformers import SentenceTransformer, util
+from sentence_transformers import SentenceTransformer, util
 import torch
-import spacy"""
+import spacy
 import requests
 
 @st.cache(suppress_st_warning=True)
 def read_copy_tensor():
     path_inference = 'https://openpharma.s3.us-east-2.amazonaws.com/ml/inference_description.pt'
     response = requests.get(path_inference)
-    open("my_tensor.pt", "wb").write(response.content)
+    open("inference_description.pt", "wb").write(response.content)
     return 0
 
-"""
+
 def clean_data(X, is_lemma: bool=True, remove_stop: bool=True, is_alphabetic: bool=True):
-    X : list of string such as ["sentence_1", "sentences_2", ... , "sentence_n"]
+    """X : list of string such as ["sentence_1", "sentences_2", ... , "sentence_n"]
     Return : list of list of words 
     [
         ["word_1 word_2 ... word_n"], (sentence 1 cleaned)
@@ -23,7 +23,7 @@ def clean_data(X, is_lemma: bool=True, remove_stop: bool=True, is_alphabetic: bo
         .
         ["word_1 word_2 ... word_n"] (sentence n cleaned)
     ]
-    
+    """
     nlp = spacy.load("en_core_web_sm")
     # (is_lemma = True, remove_stop = True, is_alpha = False) = (1,1,0)
     hyperparam_tuple = (is_lemma, remove_stop, is_alphabetic)
@@ -92,5 +92,3 @@ class SearchEngine:
         top_results = torch.topk(cos_scores, k=topk)
         #Give the result with cosine similarity
         return top_results
-
-"""
