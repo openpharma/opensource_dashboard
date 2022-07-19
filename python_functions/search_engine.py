@@ -1,7 +1,7 @@
 import streamlit as st
-from sentence_transformers import SentenceTransformer, util
+"""from sentence_transformers import SentenceTransformer, util
 import torch
-import spacy
+import spacy"""
 import requests
 
 @st.cache(suppress_st_warning=True)
