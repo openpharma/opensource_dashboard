@@ -2,7 +2,6 @@
 import torch
 import spacy
 
-
 def clean_data(X, is_lemma: bool=True, remove_stop: bool=True, is_alphabetic: bool=True):
     X : list of string such as ["sentence_1", "sentences_2", ... , "sentence_n"]
     Return : list of list of words 
