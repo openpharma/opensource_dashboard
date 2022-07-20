@@ -14,7 +14,7 @@ def read_copy_tensor():
 
 def clean_data(X, is_lemma: bool=True, remove_stop: bool=True, is_alphabetic: bool=True):
     """X : list of string such as ["sentence_1", "sentences_2", ... , "sentence_n"]
-    Return : list of list of words 
+    Return : list of list of words.
     [
         ["word_1 word_2 ... word_n"], (sentence 1 cleaned)
         ["word_1 ... word_n"],
