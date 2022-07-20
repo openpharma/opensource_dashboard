@@ -1,3 +1,6 @@
 [submodule "all-MiniLM-L6-v2"]
 	path = all-MiniLM-L6-v2
 	url = https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+[submodule "all-MiniLM-L6-v2-BERT"]
+	path = all-MiniLM-L6-v2-BERT
+	url = https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
