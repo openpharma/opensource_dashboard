@@ -66,7 +66,6 @@ def display_data(df: pd.DataFrame) -> List[str]:
         nb_cards = 20
     else:
         nb_cards = len(df)
-    
     df['last_commit_d'] = df['last_commit_d'].astype('Int64')
     pack_img = df['icon_package'][:nb_cards].tolist()
     lang_img = df['icon_package_link'][:nb_cards].tolist()
