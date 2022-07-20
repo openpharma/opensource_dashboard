@@ -4,6 +4,7 @@ import streamlit as st
 import re
 from python_functions import search_engine
 import torch
+import time
 
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
@@ -39,9 +40,9 @@ def filter_df(
 
 
     if(search_bar!= ''):
-        search_engine.read_copy_tensor()
-        search_engine.SearchEngine().read_inference("inference_description.pt").fit(search_bar)
-        
+        embed_corpus = search_engine.read_copy_tensor()
+        test = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
+        df = df.reindex(test[1].tolist())
     # General filter
     df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
     
@@ -57,16 +58,15 @@ def filter_df(
     if(language != 'All'):
         df = df[df['lang'] == language.lower()]
 
-    # Simple character matching
-    list_search = search_bar.lower().split()
-    rstr = '|'.join(list_search)
-    df = df[df['title'].str.lower().str.contains(rstr) | df['description'].str.lower().str.contains(rstr)]
-
     return df.reset_index(drop=True)
 
 def display_data(df: pd.DataFrame) -> List[str]:
     l_data = []
-    nb_cards = 20
+    if(len(df)>=20):
+        nb_cards = 20
+    else:
+        nb_cards = len(df)
+    
     df['last_commit_d'] = df['last_commit_d'].astype('Int64')
     pack_img = df['icon_package'][:nb_cards].tolist()
     lang_img = df['icon_package_link'][:nb_cards].tolist()
