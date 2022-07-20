@@ -83,7 +83,7 @@ class SearchEngine:
 
     def fit(self, query):
         query_clean = clean_data(query, is_lemma=False, remove_stop=True, is_alphabetic=True)
-        embedder = SentenceTransformer('all-MiniLM-L6-v2-BERT')
+        embedder = SentenceTransformer('LM-L6-BERT')
         self.embed_query = embedder.encode(query_clean, convert_to_tensor=True)
         return self
 
