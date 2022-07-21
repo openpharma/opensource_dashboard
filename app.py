@@ -4,6 +4,7 @@ from apps import pharmapackages, openissues, leaderboard # import your app modul
 
 st.set_page_config(layout="wide", page_title='Navbar sample')
 st.set_option('deprecation.showPyplotGlobalUse', False)
+
 #contain both header and boostrap 5.2
 utl.inject_custom_css()
 utl.navbar_component()
