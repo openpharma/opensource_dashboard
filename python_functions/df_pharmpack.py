@@ -38,7 +38,7 @@ def filter_df(
     pharmaverse: bool=False
     ) -> pd.DataFrame:
 
-
+    # BERT Model
     if(search_bar!= ''):
         embed_corpus = search_engine.read_copy_tensor()
         test = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
@@ -59,6 +59,9 @@ def filter_df(
         df = df[df['lang'] == language.lower()]
 
     return df.reset_index(drop=True)
+
+
+
 
 def display_data(df: pd.DataFrame) -> List[str]:
     l_data = []
