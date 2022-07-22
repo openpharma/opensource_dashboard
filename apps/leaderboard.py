@@ -7,7 +7,6 @@ def page_content():
     with open('style/leaderboard.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-
     PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/people_clean.csv'
     PATH_PHARMAVERSE = 'http://openpharma.s3-website.us-east-2.amazonaws.com/people_clean_pharmaverse.csv'
 
