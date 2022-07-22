@@ -32,13 +32,13 @@
     color: white; /* blue colors for links too */
     text-decoration: inherit;
     position: relative;
-    top: -20px;
-    padding: 28px 18px 18px 18px;
+    top: -14px;
+    padding: 24px 15px 18px 15px;
 }
 
 .navbar .navbar-brand {
     position: relative;
-    top: -27px;
+    top: -23px;
     padding-bottom: 5px;
 }
 
@@ -47,30 +47,6 @@
     color: #002171;
 }
 
-.icon_size_menu_1 {
-    position: relative;
-    top: 1px;
-    right: 2px;
-    font-size: 18px;
-}
-
-.icon_size_menu_2 {
-    position: relative;
-    top:2px;
-    right: 2px;
-    font-size: 21px;
-}
-
-.icon_size_menu_3 {
-    position: relative;
-    top: 1px;
-    right: 2px;
-    font-size: 27px;
-}
-
-.icon_size_menu_4 {
-    position: relative;
-    top: 1px;
-    right: 2px;
-    font-size: 15px;
+.navbar-nav span {
+    padding-left: 5px;
 }

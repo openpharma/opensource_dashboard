@@ -1,6 +1,6 @@
 import streamlit as st
 import utils as utl
-from apps import pharmapackages, openissues, leaderboard, about # import your app modules here
+from apps import pharmapackages, openissues, activity, leaderboard, about # import your app modules here
 
 st.set_page_config(layout="wide", page_title='Navbar sample')
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -16,6 +16,8 @@ def navigation():
         pharmapackages.page_content()
     elif route == "openissues":
         openissues.page_content()
+    elif route == "activity":
+        activity.page_content()
     elif route == "leaderboard":
         leaderboard.page_content()
     elif route == "about":

@@ -1,0 +1,26 @@
+
+
+/* ----------------------
+Remove automatic Streamlit hover link
+-----------------------*/
+
+#activity {
+    background-color: #F1F1F1;
+    color: #002171;
+}
+
+iframe:not( :last-child) {
+    height: 0rem;
+}
+
+.appview-container > :last-child {
+    margin-top: -110px;
+}
+
+.h2_remove_hover div :not(span) {
+    display: none;
+  }
+
+/* ----------------------
+Content
+-----------------------*/
