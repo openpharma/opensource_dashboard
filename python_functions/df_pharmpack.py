@@ -72,9 +72,11 @@ def display_data(df: pd.DataFrame) -> List[str]:
     df['last_commit_d'] = df['last_commit_d'].astype('Int64')
     pack_img = df['icon_package'][:nb_cards].tolist()
     lang_img = df['icon_package_link'][:nb_cards].tolist()
-    link_github = ("https://github.com/"+df['full_name'])[:nb_cards].tolist()
-    link_cran = ("https://cran.r-project.org/web/packages/"+df['repo']+"/index.html")[:nb_cards].tolist()
+    list_full_name = df['full_name'][:nb_cards].tolist()
+    link_github = ["https://github.com/"+x for x in list_full_name]
     pack_name = df['repo'][:nb_cards].tolist()
+    link_cran = ["https://cran.r-project.org/web/packages/"+x+"/index.html" for x in pack_name]
+    link_oss_insight = ["https://ossinsight.io/analyze/"+x for x in list_full_name]
     descri = [clean_html(x) for x in df['description'][:nb_cards].tolist()]
     org = df['org'][:nb_cards].tolist()
     contrib = df['Contributors'][:nb_cards].tolist()
@@ -101,9 +103,14 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-github ml-2" viewBox="0 0 16 16">
                             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
                         </svg></a>
-                                    <a href="{link_cran[i]}" target="_blank">
+                                    <a href="{link_cran[i]}" style="color: white" target="_blank">
                                         <img src="{lang_img[i]}" width="17" height="17" class="ml-2" alt="" />
                                     </a>
+                                    <div class="pills d-inline-flex pills_oss_insight">
+                                    <a href="{link_oss_insight[i]}" style="color: white" target="_blank">
+                                        &#128202; <p>Oss Insight</p>
+                                    </a>
+                                    </div>
                                     </div>
                                     <div class="proj_description">
                                     <p class="mt-3">

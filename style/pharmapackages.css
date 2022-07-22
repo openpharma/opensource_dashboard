@@ -69,12 +69,18 @@ Content
       flex: 0 0 80px;
       padding: 4px 3px 0px 15px;
   }
-  
-  @media (max-width: 690px) {
-    .icon_package_card {
-      display: none; 
-    } 
-  }
+
+
+
+.pills_oss_insight {
+  margin-left: 5px;
+  position: relative;
+  top: 1px;
+}
+
+.pills_oss_insight a p {display:none; position: absolute; width: 80px; text-decoration: underline; top:3px;}
+.pills_oss_insight a:hover p {display:inline;}
+.pills_oss_insight a:hover {display:inline;}
   
 
   .row_1 h2 {
