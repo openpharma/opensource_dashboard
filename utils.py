@@ -3,9 +3,10 @@ import base64
 from streamlit.components.v1 import html
 
 NAVBAR_PATHS = {
-    '<span class="icon_size_menu_1">&#9778;</span>  Packages': 'pharmapackages',
-    '<span class="icon_size_menu_2">&#x2609</span> Open issues': 'openissues',
-    '<span class="icon_size_menu_3"> &#9813;</span> LeaderBoard': 'leaderboard'
+    '<span class="icon_size_menu_1">&#9778;</span><span class="d-none d-md-inline">Packages</span>': 'pharmapackages',
+    '<span class="icon_size_menu_2">&#x2609</span><span class="d-none d-md-inline">Open issues</span>': 'openissues',
+    '<span class="icon_size_menu_3"> &#9813;</span><span class="d-none d-md-inline">LeaderBoard</span>': 'leaderboard',
+    '<span class="icon_size_menu_4"> &#x24D8;</span><span class="d-none d-md-inline">About</span>': 'about'
 }
 
 

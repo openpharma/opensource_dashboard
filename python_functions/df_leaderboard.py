@@ -25,7 +25,7 @@ def path_to_image_html(path):
 def display_data_categories(df: pd.DataFrame)-> List[str]:
     l_data = []
     l_icon_metric = ["&#x1F468;&#x200D;&#x1F4BB;", "&#x1F450", "&#x1F9BE"]
-    l_title_metric = ["Best coder", "Best altruist", "Best self pillar"]
+    l_title_metric = ["Best coder", "Best altruist", "Best self maintainer"]
     df_coder = df.sort_values(by="coder_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "commits", "contributed_to"]]
     df_altruist = df.sort_values(by="altruist_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "#comments_altruist", "#reactions_altruist", "#first_comments_altruist"]]
     df_maintainer = df.sort_values(by="self_maintainer_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "#comments_self_maintainer", "#reactions_self_maintainer", "#first_comments_self_maintainer"]]
@@ -130,7 +130,7 @@ def display_data_overall(df: pd.DataFrame)-> str:
                         <th scope="col"></th>
                         <th scope="col">Coder Score</th>
                         <th scope="col">Altruist Score</th>
-                        <th scope="col">Self Pillar Score</th>
+                        <th scope="col">Self maintainer Score</th>
                         <th scope="col">Overall Score</th>
                     </tr>
                 </thead>

@@ -6,6 +6,11 @@ Remove automatic Streamlit hover link
   display: none;
 }
 
+html {
+  min-width: 700px;
+  height:10px;
+}
+
 
 /* ----------------------
 Sidebar
