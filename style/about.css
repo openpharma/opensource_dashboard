@@ -18,3 +18,8 @@ iframe:not( :last-child) {
 .h2_remove_hover div :not(span) {
     display: none;
   }
+  
+
+/* ----------------------
+Content
+-----------------------*/

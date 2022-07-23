@@ -6,3 +6,4 @@ def page_content():
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
     st.header("About Open-pharma")
+    st.text()

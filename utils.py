@@ -32,7 +32,7 @@ def navbar_component():
                 <nav class="navbar">
                     <a class="navbar-brand" href="/" target="_blank">
                         <img src="https://avatars.githubusercontent.com/u/8436743?s=200&v=4" width="30" height="30" alt="">
-                        Open Pharma
+                        <span class="d-none d-md-inline">Open Pharma</span>
                     </a>
                     <ul class="navbar-nav">
                         {navbar_items}
