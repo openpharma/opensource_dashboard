@@ -67,10 +67,9 @@ def page_content():
     st.header(":mag: Search")
     search_bar = st.text_input(
         '',
-        placeholder='Search a package...'
+        placeholder='Search across more than 300 R packages related to pharma for your data formatting, analysis and plots'
     )
-        
-
+    
     """
 
     HTML Card
