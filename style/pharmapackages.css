@@ -153,17 +153,18 @@ Content
   }
 
 /* ----------------------
-Info Button
+Info Button RELIABILITY
 -----------------------*/
 
 
-dfn {
+.reliability_info dfn {
   padding: 0 0.4em;
   cursor: help;
   font-style: normal;
   position: relative;
 }
-dfn::after {
+
+.reliability_info dfn::after {
   content: attr(data-info);
   display: inline;
   position: absolute;
@@ -178,7 +179,7 @@ dfn::after {
   transition: opacity 250ms, top 250ms;
   font-size: 0.9em;
 }
-dfn::before {
+.reliability_info dfn::before {
   content: '';
   display: block;
   position: absolute;
@@ -190,8 +191,54 @@ dfn::before {
   transition: opacity 250ms, top 250ms;
   font-size: 0.9em;
 }
-dfn:hover {z-index: 1000;} /* Keeps the info boxes on top of other elements */
-dfn:hover::after,
-dfn:hover::before {opacity: 1; font-size: 0.9em;}
-dfn:hover::after {top: 20px;}
-dfn:hover::before {top: 10px;}
+.reliability_info dfn:hover {z-index: 1000000;} /* Keeps the info boxes on top of other elements */
+.reliability_info dfn:hover::after,
+.reliability_info dfn:hover::before {opacity: 1; font-size: 0.9em;}
+.reliability_info dfn:hover::after {top: 20px;}
+.reliability_info dfn:hover::before {top: 10px;}
+
+
+
+/* ----------------------
+Info Button OSS INSIGHT
+-----------------------*/
+
+
+.pills_oss_insight dfn {
+  padding: 0 0.4em;
+  font-style: normal;
+  position: relative;
+}
+
+.pills_oss_insight dfn::after {
+  content: attr(data-info);
+  display: inline;
+  position: absolute;
+  top: 30px; left: -50px;
+  opacity: 0;
+  width: 120px;
+  font-size: 15px;
+  padding: 0.5em 0.8em;
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  pointer-events: none; /* This prevents the box from apearing when hovered. */
+  transition: opacity 250ms, top 250ms;
+  font-size: 0.7em;
+}
+.pills_oss_insight dfn::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 20px; left: 10px;
+  opacity: 0;
+  width: 0; height: 0;
+  border: solid transparent 5px;
+  border-bottom-color: rgba(0,0,0,0.8);
+  transition: opacity 250ms, top 250ms;
+  font-size: 0.7em;
+}
+.pills_oss_insight dfn:hover {z-index: 1000000;} /* Keeps the info boxes on top of other elements */
+.pills_oss_insight dfn:hover::after,
+.pills_oss_insight dfn:hover::before {opacity: 1; font-size: 0.7em;}
+.pills_oss_insight dfn:hover::after {top: 35px;}
+.pills_oss_insight dfn:hover::before {top: 25px;}

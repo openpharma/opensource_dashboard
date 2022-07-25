@@ -107,9 +107,11 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                         <img src="{lang_img[i]}" width="17" height="17" class="ml-2" alt="" />
                                     </a>
                                     <div class="pills d-inline-flex pills_oss_insight">
-                                    <a href="{link_oss_insight[i]}" style="color: white" target="_blank">
-                                        &#128202; <p>Oss Insight</p>
-                                    </a>
+                                        <dfn data-info="Click to get more insight in OSSinsight">
+                                            <a href="{link_oss_insight[i]}" style="color: white" target="_blank">
+                                            &#128202;
+                                            </a>
+                                        </dfn>
                                     </div>
                                     </div>
                                     <div class="proj_description">
@@ -120,7 +122,7 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                 </div>
                                 </div>
                                 <div class="row row_2 border-top pb-0">
-                                <div class="col-xl-3 text-center align-top">
+                                <div class="col-xl-3 col-md-4 col-4 text-center align-top">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-building" viewBox="0 0 15 15">
   <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
   <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
@@ -129,15 +131,15 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                     {org[i]}
                                     </p>
                                 </div>
-                                <div class="col-xl-3 text-center align-top">
+                                <div class="col-xl-3 col-lg-4 col-4 text-center align-top">
                                     <h2 class="h2_remove_hover">{contrib[i]}</h2>
                                     <p>Contributors</p>
                                 </div>
-                                <div class="col-xl-3 text-center align-top">
+                                <div class="col-xl-3 text-center align-top d-none d-xl-inline">
                                     <h2 class="h2_remove_hover">{last_commit[i]} d</h2>
                                     <p class="p-0">Since last<br /> commit</p>
                                 </div>
-                                <div class="col-xl-3 text-center align-top">
+                                <div class="col-xl-3 col-lg-4 col-4 text-center align-top reliability_info">
                                     <p><dfn data-info="The reliability score is based on the average of 2 metrics : os-health (openpharma.github.io/os-health.html) and riskmetric (pharmar.github.io/riskmetric/index.html)">Reliability &#x24D8;</dfn></p>
                                         <div class="progress">
                                             <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {int(risk_metric[i])}%" role="progressbar" aria-valuenow="{risk_metric[i]}" aria-valuemin="0" aria-valuemax="100">
