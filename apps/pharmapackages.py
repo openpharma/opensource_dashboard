@@ -70,10 +70,9 @@ def page_content():
         placeholder='Search across more than 300 R packages related to pharma for your data formatting, analysis and plots'
     )
     
+    
     """
-
     HTML Card
-
     """
 
     df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law,search_bar, agree_pharmaverse)
