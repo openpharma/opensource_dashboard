@@ -32,11 +32,10 @@ def page_content():
         st.header("Categories")
         categories_topics = st.multiselect(
             label='Select Multiple categories',
-            options=['ctv', 'filing-tools', 'filing-tools, tlg', 'omics', 'clinical-statistics', 'tlg', 'filing-tools, gh-action', 'pkpd', 'synthetic-data'],
-            default=['ctv', 'filing-tools', 'filing-tools, tlg', 'omics', 'clinical-statistics', 'tlg', 'filing-tools, gh-action', 'pkpd', 'synthetic-data']
+            options=['ctv', 'filing-tools', 'filing-tools, tlg', 'omics', 'clinical-statistics', 'tlg', 'filing-tools, gh-action', 'pkpd', 'synthetic-data']
         )
 
-        st.header("# of contributors")
+        st.header("Number of contributors")
         min_nb_contrib = st.slider(
             label="Choose a range of values",
             min_value=0, 

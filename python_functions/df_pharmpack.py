@@ -44,7 +44,12 @@ def filter_df(
         test = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
         df = df.reindex(test[1].tolist())
     # General filter
-    df = df[(df['type'].isin(categories)) & (df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
+    df = df[(df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
+
+    #Categories filter
+    if (len(categories)>=1):
+        df = df[df['type'].isin(categories)]
+
     
     # Filter on pharmaverse packages only
     if(pharmaverse):
@@ -57,6 +62,9 @@ def filter_df(
         df = df[df['license_clean'] == license]
     if(language != 'All'):
         df = df[df['lang'] == language.lower()]
+
+    if(search_bar== ''):
+        df = df.sort_values(by="Contributors", ascending=False)
 
     return df.reset_index(drop=True)
 

@@ -2,6 +2,9 @@ import streamlit as st
 import base64
 from streamlit.components.v1 import html
 
+
+#https://icon-sets.iconify.design/?query=growth to get icon
+
 NAVBAR_PATHS = {
     '<svg class="icon_size_menu_1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="18" height="18" preserveAspectRatio="xMidYMid meet" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M14 10V1.5l-.5-.5H3.74a1.9 1.9 0 0 0-.67.13a1.77 1.77 0 0 0-.94 1a1.7 1.7 0 0 0-.13.62v9.5a1.7 1.7 0 0 0 .13.67c.177.427.515.768.94.95a1.9 1.9 0 0 0 .67.13H4v-1h-.26a.72.72 0 0 1-.29-.06a.74.74 0 0 1-.4-.4a.93.93 0 0 1-.05-.29v-.5a.93.93 0 0 1 .05-.29a.74.74 0 0 1 .4-.4a.72.72 0 0 1 .286-.06H13v2H9v1h4.5l.5-.5V10zM4 10V2h9v8H4zm1-7h1v1H5V3zm0 2h1v1H5V5zm1 2H5v1h1V7zm.5 6.49L5.28 15H5v-3h3v3h-.28L6.5 13.49z" clip-rule="evenodd"/></svg><span class="d-none d-md-inline">Packages</span>': 'pharmapackages',
     '<svg class="icon_size_menu_2" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="18" height="18" preserveAspectRatio="xMidYMid meet" viewBox="0 0 32 32"><path fill="currentColor" d="M16 4C9.383 4 4 9.383 4 16s5.383 12 12 12s12-5.383 12-12S22.617 4 16 4zm0 2c5.535 0 10 4.465 10 10s-4.465 10-10 10S6 21.535 6 16S10.465 6 16 6zm0 7a3 3 0 1 0 .002 6.002A3 3 0 0 0 16 13z"/></svg><span class="d-none d-md-inline">Open issues</span>': 'openissues',
@@ -30,7 +33,7 @@ def navbar_component():
 
     component = rf'''
                 <nav class="navbar">
-                    <a class="navbar-brand" href="/" target="_blank">
+                    <a class="navbar-brand">
                         <img src="https://avatars.githubusercontent.com/u/8436743?s=200&v=4" width="30" height="30" alt="">
                         <span class="d-none d-md-inline">Open Pharma</span>
                     </a>

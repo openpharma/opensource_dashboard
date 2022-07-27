@@ -23,3 +23,35 @@ iframe:not( :last-child) {
 /* ----------------------
 Content
 -----------------------*/
+
+
+#title_main_obj {
+    text-align: center;
+    font-size: 1.4em;
+    color: #002171;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.icon_objective_open  {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.icon_objective_open span {
+    font-size: 40px;
+    padding: 25px 30px 25px 30px;
+    background: #002171;
+    border-radius: 200px;
+}
+.icon_objective_open p {
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #002171;
+    font-weight: 600;
+}
+
+#principles_open_pharma {
+    margin-top: 30px;
+}
