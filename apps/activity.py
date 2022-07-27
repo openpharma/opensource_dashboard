@@ -6,7 +6,7 @@ def page_content():
     with open('style/activity.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-    st.title("!Not real Data!")
+    st.title("Not real Data!")
 
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("#Repos", "286")
