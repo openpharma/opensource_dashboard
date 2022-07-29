@@ -2,7 +2,6 @@ import pandas as pd
 from typing import List
 import streamlit as st
 
-
 @st.cache(suppress_st_warning=True)
 def read_data_leaderboard(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
