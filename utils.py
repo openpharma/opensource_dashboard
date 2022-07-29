@@ -34,7 +34,7 @@ def navbar_component():
     component = rf'''
                 <nav class="navbar">
                     <a class="navbar-brand">
-                        <img src="https://avatars.githubusercontent.com/u/8436743?s=200&v=4" width="30" height="30" alt="">
+                        <img src="https://openpharma.s3.us-east-2.amazonaws.com/streamlit_img/logo.png" width="30" alt="">
                         <span class="d-none d-md-inline">Open Pharma</span>
                     </a>
                     <ul class="navbar-nav">

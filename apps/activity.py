@@ -7,18 +7,22 @@ def page_content():
     with open('style/activity.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     
-    st.title("Not real Data!")
+    st.title("Overall Open pharma packages insights")
 
-    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv'
-    df = df_activity.read_repos_clean(PATH)
+    PATH_REPO = "http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv"
+    PATH_COMMITS = "https://openpharma.s3.us-east-2.amazonaws.com/commits.csv"
+    df_repos = df_activity.read_repos(PATH_REPO)
+    df_commits = df_activity.read_commits(PATH_COMMITS)
+    active_repo, evol_repo = df_activity.repo_contrib_activity(df_commits, "full_name")
+    active_contrib, evol_contrib = df_activity.repo_contrib_activity(df_commits, "author")
 
-    col1, col2, col3, col4 = st.columns(4)
-    col1.metric("Nb of packages", "{nb}".format(nb=len(df)))
-    col2.metric("Active repos", "112", "+3%")
-    col3.metric("Active contributors", "256", "-2%")
-    col4.metric("Docs Ratio", "86%")
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Nb of packages", "{nb}".format(nb=len(df_repos)))
+    col2.metric("Active repos (last 30 days)", "{nb}".format(nb=active_repo), "{nb}%".format(nb=evol_repo))
+    col3.metric("Active contributors (last 30 days)", "{nb}".format(nb=active_contrib), "{nb}%".format(nb=evol_contrib))
     
-    st.header("Cumulative trend of #contributors and #repos")
+    st.header("!not real data for the moment! Cumulative trend of #contributors and #repos")
     chart_data = pd.DataFrame(
         [[randint(60, 120), randint(80, 200)] for i in range(0, 100)],
         columns=['Contributors', 'Repos']

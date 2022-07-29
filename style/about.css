@@ -23,7 +23,9 @@ iframe:not( :last-child) {
 /* ----------------------
 Content
 -----------------------*/
-
+p, li {
+    text-align: justify;
+}
 
 #title_main_obj {
     text-align: center;
