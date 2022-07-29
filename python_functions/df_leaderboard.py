@@ -49,10 +49,19 @@ def display_data_categories(df: pd.DataFrame)-> List[str]:
     for i in range(0,3):
         components = rf"""
             <div class="row row_card">
-                <div class="sidebar col_left_icon d-inline">
+                <div class="sidebar col_left_icon d-sm-none d-none d-md-block">
                     <p class="icon_metric">{l_icon_metric[i]}</p>
                     <h2 class="h2_remove_hover">{l_title_metric[i]}</h2>
-                    <dfn data-info="{l_metrics_info[i]}">&#x24D8</dfn>
+                    <dfn data-info="{l_metrics_info[i]}">&#x24D8;</dfn>
+                </div>
+                <div class="col-12 col_left_icon_mobile d-block d-md-none">
+                    <div class="align-top" style="width:30%;" >
+                        <p class="icon_metric">{l_icon_metric[i]}</p>
+                    </div>
+                    <div class="align-top" style="width: 65%;">
+                        <h2 class="h2_remove_hover">{l_title_metric[i]}</h2>
+                        <p style="font-size:0.6em;">{l_metrics_info[i]}</p>
+                    </div>
                 </div>
                 <div class="col col_rank d-flex aligns-items-center">
                     <table class="table table_top3">
@@ -113,7 +122,7 @@ def display_data_overall(df: pd.DataFrame)-> str:
     for i in range(len(df_overall)): 
         cell_components += rf"""<tr>
             <td style="width: 40px;"><img src="{df_overall["avatar"][i]}" alt="" width="30" /></td>
-            <td><span class="pseudo">{df_overall["author"][i]}</span></td>
+            <td><span class="pseudo d-none d-sm-none d-md-none d-lg-block">{df_overall["author"][i]}</span></td>
             <td class="number_rank">{df_overall["coder_metric"][i]}</td>
             <td class="number_rank">{df_overall["altruist_metric"][i]}</td>
             <td class="number_rank">{df_overall["self_maintainer_metric"][i]}</td>

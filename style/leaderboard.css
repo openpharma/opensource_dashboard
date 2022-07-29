@@ -110,6 +110,46 @@ dfn {
   .col_left_icon dfn {
     display: block;
   }
+
+
+/* ----------------------
+Mobile responsiveness ranking
+-----------------------*/
+  .col_left_icon_mobile {
+    background: #002171;
+    color: white;
+    border-radius: 20px 20px 0px 0px;
+    text-align: center;
+  }
+
+  .col_left_icon_mobile h2 {
+      color: white;
+      font-size: 1.15em;
+      margin: 0;
+      padding: 10px 10px 10px 0px;
+  }
+
+
+  .col_left_icon_mobile div {
+    display: inline-block;
+    text-align: left;
+    text-align: justify;
+  }
+
+  .col_left_icon_mobile .icon_metric {
+    width: 100px;
+    display: block;
+    font-size: 55px;
+    padding: 0px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+
+
+/* ----------------------
+Leaderboard by categories
+-----------------------*/
   
   .table_top3 {
     vertical-align: middle;
