@@ -5,7 +5,7 @@ Remove automatic Streamlit hover link
 -----------------------*/
 
 #leaderboard {
-    background-color: #F1F1F1;
+    background-color: #f3f4f6;
     color: #002171;
 }
 
@@ -70,7 +70,7 @@ dfn {
   dfn:hover::before {top: 20px;}
   
   .row_card {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border: 1px solid rgb(243, 243, 243);
     margin: 0px;
     border-radius: 20px 20px 20px 20px;
     background: white;
@@ -199,7 +199,7 @@ Overall Ranking Overall Ranking
 -----------------------*/
 
   .row_global_lead {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  border: 1px solid rgb(243, 243, 243);
   margin: 0px;
   border-radius: 20px 20px 20px 20px;
   background: white;  

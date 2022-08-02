@@ -17,7 +17,7 @@ Sidebar
 -----------------------*/
 
 #pharmapackages {
-  background-color: #F1F1F1;
+  background-color: #f3f4f6;
   color: #002171;
 }
 
@@ -27,7 +27,7 @@ section[data-testid="stSidebar"] > :last-child {
 
 section[data-testid="stSidebar"] {
     margin-top: 48px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(142, 142, 142, 0.12), 0 1px 2px rgba(142, 142, 142, 0.12);
 }
 
 section[data-testid="stSidebar"] > :first-child > :last-child  {
@@ -36,7 +36,7 @@ section[data-testid="stSidebar"] > :first-child > :last-child  {
 }
 
 .stTextInput div[data-baseweb="input"] {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 1px rgba(142, 142, 142, 0.12), 0 1px 1px rgba(142, 142, 142, 0.12);
 }
 
 
@@ -59,9 +59,9 @@ Content
 }
 
 .card {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     margin-bottom: 30px;
     border-radius: 15px;
+    border: 1px solid rgb(243, 243, 243);
   }
   
   .icon_package_card {

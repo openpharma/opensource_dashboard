@@ -30,7 +30,6 @@ def navbar_component():
     navbar_items = ''
     for key, value in NAVBAR_PATHS.items():
         navbar_items += (f'<li><a class="navitem" id="{value}" href="/?nav={value}">{key}</a></li>')
-
     component = rf'''
                 <nav class="navbar">
                     <a class="navbar-brand">
