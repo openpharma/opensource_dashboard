@@ -18,7 +18,7 @@ def page_content():
         label_openissues = st.multiselect(
             label='Select Multiple categories',
             options=['good first issue', 'help wanted', 'discussion', 'good first issue, help wanted', 'bug'],
-            default=['good first issue', 'help wanted', 'discussion', 'good first issue, help wanted', 'bug']
+            default=[]
         )
 
         st.header("Days since last comment")

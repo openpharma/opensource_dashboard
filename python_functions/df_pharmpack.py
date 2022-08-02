@@ -37,12 +37,12 @@ def filter_df(
     search_bar: str='',
     pharmaverse: bool=False
     ) -> pd.DataFrame:
-
+    
     # BERT Model
     if(search_bar!= ''):
         embed_corpus = search_engine.read_copy_tensor()
-        test = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
-        df = df.reindex(test[1].tolist())
+        result_index = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
+        df = df.reindex(result_index[1].tolist())
     # General filter
     df = df[(df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
 
