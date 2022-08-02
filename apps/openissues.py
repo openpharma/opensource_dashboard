@@ -47,7 +47,7 @@ def page_content():
     st.header(":mag: Search")
     search_bar = st.text_input(
         '',
-        placeholder='Search a package...'
+        placeholder='Search across open issues to contribute'
     )
 
 

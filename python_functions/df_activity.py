@@ -5,12 +5,12 @@ import numpy as np
 from datetime import datetime, timedelta
 
 
-@st.cache(suppress_st_warning=True)
+@st.cache(allow_output_mutation=True)
 def read_repos(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
 
-@st.cache(suppress_st_warning=True)
+@st.cache(allow_output_mutation=True)
 def read_commits(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df

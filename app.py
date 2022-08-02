@@ -2,7 +2,7 @@ import streamlit as st
 import utils as utl
 from apps import pharmapackages, openissues, activity, leaderboard, about # import your app modules here
 
-st.set_page_config(layout="wide", page_title='OpenPharma')
+st.set_page_config(layout="wide", page_title='OpenPharma', page_icon=':pill:')
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 #contain both header and boostrap 5.2
