@@ -31,13 +31,13 @@
     color: white; /* blue colors for links too */
     text-decoration: inherit;
     position: relative;
-    top: -14px;
+    top: -17px;
     padding: 24px 15px 18px 15px;
 }
 
 .navbar .navbar-brand {
     position: relative;
-    top: -23px;
+    top: -25px;
     padding-bottom: 5px;
 }
 

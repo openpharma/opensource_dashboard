@@ -44,7 +44,7 @@ def display_data(df) -> List[str]:
     
     if (len(pack_name)>=1):
         for i in range(0, len(pack_name)):
-            components = rf"""                    
+            components = rf"""        
                     <div class="row">
                         <div class="col-sm-auto align-items-center d-inline-flex package_name">
                             <img src="{pack_icon[i]}" alt="" height=16/>
