@@ -3,10 +3,10 @@ from python_functions import df_openissues
 
 
 def page_content():
-
+    """Read and display data"""
+    
     PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/help_clean.csv'
     df = df_openissues.read_data_openissues(PATH)
-
 
     with open('style/openissues.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -56,8 +56,8 @@ def page_content():
     #st.dataframe(df_issue)
     l_components = df_openissues.display_data(df_issue)
     
-    if (len(l_components)>=1):
-        for i in range(0, len(l_components)):
-            st.markdown(l_components[i], unsafe_allow_html=True)
+    if len(l_components) >= 1:
+        for elem in l_components:
+            st.markdown(elem, unsafe_allow_html=True)
     else:
         st.markdown("We don't have an open issue matching your request")

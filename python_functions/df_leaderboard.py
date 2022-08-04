@@ -1,12 +1,11 @@
-import pandas as pd
 from typing import List
+import pandas as pd
 import streamlit as st
 
 @st.cache(suppress_st_warning=True)
 def read_data_leaderboard(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
-
 
 def filter_df(df: pd.DataFrame):
     try:
@@ -20,7 +19,6 @@ def filter_df(df: pd.DataFrame):
         
 def path_to_image_html(path):
     return '<img src="'+ path + '" width="30"/>'
-
 
 def display_data_categories(df: pd.DataFrame)-> List[str]:
     l_data = []

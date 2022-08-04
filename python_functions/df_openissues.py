@@ -1,7 +1,7 @@
-import pandas as pd
 from typing import List
-import streamlit as st
 import markdown
+import pandas as pd
+import streamlit as st
 
 
 @st.cache(suppress_st_warning=True)
@@ -19,7 +19,7 @@ def filter_df(df: pd.DataFrame,
     ) -> pd.DataFrame:
 
     #Categories filter
-    if (len(label)>=1):
+    if len(label) >= 1:
         df = df[df['label'].isin(label)]
 
     df = df[(df['days_no_activity'] >= day_no_activity[0]) & (df['days_no_activity'] <= day_no_activity[1]) & (df['comments'] >= nb_comments[0]) & (df['comments'] <= nb_comments[1]) & (df['author_status'].isin(author_status))]
@@ -42,7 +42,7 @@ def display_data(df) -> List[str]:
     issue_comments = df['comments'][:nb_cards].tolist()
     issue_body = df['body'][:nb_cards].tolist()
     
-    if (len(pack_name)>=1):
+    if len(pack_name) >= 1:
         for i in range(0, len(pack_name)):
             components = rf"""        
                     <div class="row">
@@ -84,7 +84,6 @@ def display_data(df) -> List[str]:
                                 <div class="display_collapse">{markdown.markdown(str(issue_body[i]), extensions=['extra'])}</div>
                             </details>
                         </div>
-                    </div>
-"""
+                    </div>"""
             l_data.append(components)
     return l_data

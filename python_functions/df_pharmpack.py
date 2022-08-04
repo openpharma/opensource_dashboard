@@ -1,10 +1,8 @@
-import pandas as pd
-from typing import List
-import streamlit as st
 import re
+from typing import List
+import pandas as pd
+import streamlit as st
 from python_functions import search_engine
-import torch
-import time
 
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
@@ -37,9 +35,9 @@ def filter_df(
     search_bar: str='',
     pharmaverse: bool=False
     ) -> pd.DataFrame:
-    
+
     # BERT Model
-    if(search_bar!= ''):
+    if search_bar != "":
         embed_corpus = search_engine.read_copy_tensor()
         result_index = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
         df = df.reindex(result_index[1].tolist())
@@ -47,23 +45,23 @@ def filter_df(
     df = df[(df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
 
     #Categories filter
-    if (len(categories)>=1):
+    if len(categories) >= 1:
         df = df[df['type'].isin(categories)]
 
     
     # Filter on pharmaverse packages only
-    if(pharmaverse):
+    if pharmaverse:
         df_pharmaverse = read_pharmaverse_package(PATH_PHARMAVERSE)
         l_pharmaverse = df_pharmaverse['full_name'].to_list()
         df = df[df['full_name'].isin(l_pharmaverse)]
 
     # Filter on license 
-    if(license != 'All'):
+    if license != 'All':
         df = df[df['license_clean'] == license]
-    if(language != 'All'):
+    if language != 'All':
         df = df[df['lang'] == language.lower()]
 
-    if(search_bar== ''):
+    if search_bar == '':
         df = df.sort_values(by="Contributors", ascending=False)
 
     return df.reset_index(drop=True)
@@ -73,7 +71,7 @@ def filter_df(
 
 def display_data(df: pd.DataFrame) -> List[str]:
     l_data = []
-    if(len(df)>=20):
+    if len(df) >= 20:
         nb_cards = 20
     else:
         nb_cards = len(df)
@@ -92,7 +90,7 @@ def display_data(df: pd.DataFrame) -> List[str]:
     risk_metric = df['risk_column'][:nb_cards].tolist()
     risk_color = ['bg-success' if (x >=  53) else 'bg-warning' if (x >= 21) else 'bg-danger' for x in risk_metric]
     risk_width_color = ["auto" if (x >=  53) else "15px" if (x >= 21) else "15px" for x in risk_metric]
-    if (len(pack_name)>=1):
+    if len(pack_name) >= 1:
         for i in range(0, len(pack_name)):
             
             components = rf"""
@@ -161,4 +159,3 @@ def display_data(df: pd.DataFrame) -> List[str]:
                         </div>"""
             l_data.append(components)
     return l_data
-

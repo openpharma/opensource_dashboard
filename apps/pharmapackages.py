@@ -1,27 +1,16 @@
 import streamlit as st
 from python_functions import df_pharmpack
-from python_functions import search_engine
-import torch
 
 def page_content():
-    """
-    
-    Read Data
+    """Read Data"""
 
-    """
-
-    PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv'
+    PATH = "http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv"
     df = df_pharmpack.read_data_repos(PATH)
 
     with open('style/pharmapackages.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-    """
-
-    Side Bar Filter
-
-    """
-
+    #Side bar Filter
 
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
@@ -69,10 +58,7 @@ def page_content():
         placeholder='Search across more than 300 R packages related to pharma for your data formatting, analysis and plots'
     )
     
-    
-    """
-    HTML Card
-    """
+    #HTML CARDS
 
     df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law,search_bar, agree_pharmaverse)
     #st.dataframe(df_clean)
@@ -81,7 +67,7 @@ def page_content():
     
     l_components = df_pharmpack.display_data(df_clean)
 
-    if (len(l_components)>=1):
+    if len(l_components) >= 1:
         with col1:
             for i in range(0, len(l_components), 2):
                 st.markdown(l_components[i], unsafe_allow_html=True)
