@@ -2,7 +2,7 @@ import streamlit as st
 from python_functions import df_pharmpack
 
 def page_content():
-    """Read Data"""
+    """Read and display data"""
 
     PATH = "http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv"
     df = df_pharmpack.read_data_repos(PATH)
