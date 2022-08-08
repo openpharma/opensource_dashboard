@@ -2,6 +2,8 @@
 
 The objective of openpharma is to provide a neutral home for open source software related to pharmaceutical industry that is not tied to one company or institution. https://open-pharma.herokuapp.com/
 
+📧 For any questions, feel free to contact me at the adress : mathieu.cayssol@gmail.com
+
 # 0. General overview
 
 ## Global pipeline
@@ -18,7 +20,7 @@ You are in the front-end repository of openpharma. The global project include 3 
 
 # 1. Techonologies and structure of the repo
 
-We are using Python 3.9.x and Streamlit to create the webapp. We also added
+We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the webapp. We also added custom html/css using [Boostrap 5.2](https://getbootstrap.com/).
 
 ```bash
 .
