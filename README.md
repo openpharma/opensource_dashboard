@@ -7,17 +7,12 @@ The objective of openpharma is to provide a neutral home for open source softwar
 ## Global pipeline
 
 You are in the front-end repository of openpharma. The global project include 3 repositories :
- - Data crawlers : https://github.com/openpharma/openpharma.github.io
+ - Data crawler : https://github.com/openpharma/openpharma.github.io
  - ML for search bar and data categorization : https://github.com/openpharma/openpharma_ml
  - Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
 
-## Code
 
-App developped in Python using the framework Streamlit (https://streamlit.io/).
-
-## Deployment - CI/CD
-Docker using Github Action on Heroku 
-Probably move to AWS BeansTalk or Fargate
+![Pipeline](https://user-images.githubusercontent.com/49449000/183419490-7ed52bc9-2941-4b2a-8abf-fc7496b432ac.png)
 
 
 
