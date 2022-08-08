@@ -29,7 +29,7 @@ def page_content():
             value=(0,200)
         )
         
-        st.header("# of comments")
+        st.header("Number of comments")
         nb_comments = st.slider(
             label="Choose a range of values",
             min_value=0, 
