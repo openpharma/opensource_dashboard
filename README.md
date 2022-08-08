@@ -20,9 +20,9 @@ You are in the front-end repository of openpharma. The global project include 3 
 
 ```bash
 .
-├── LM-L6-BERT ```diff (folder with BERT model for search bar)```
+├── LM-L6-BERT <span style="color:orange;">(folder with BERT model for search bar)</span>
 │   └── ....... 
-├── apps         ```diff (pages for the webappp)```
+├── apps         (pages for the webappp)
 │   ├── about.py
 │   ├── activity.py
 │   ├── leaderboard.py
