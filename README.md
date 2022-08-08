@@ -59,16 +59,14 @@ Prerequisites :
 
 
 ```bash
-git clone https://github.com/openpharma/opensource_dashboard.git
-cd <PATH_TO_THE_CLONE>
+$ git clone https://github.com/openpharma/opensource_dashboard.git
+$ cd <PATH_TO_THE_CLONE>
 ```
 
 In your virtual environnement :
 ```bash
-pip install -r requirements.txt
-```
-```bash
-streamlit run app.py
+(vitual_env)$ pip install -r requirements.txt
+(vitual_env)$ streamlit run app.py
 ```
 
 
