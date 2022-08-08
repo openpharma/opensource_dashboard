@@ -12,7 +12,7 @@ You are in the front-end repository of openpharma. The global project include 3 
  - Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
 
 
-![Pipeline](https://user-images.githubusercontent.com/49449000/183419490-7ed52bc9-2941-4b2a-8abf-fc7496b432ac.png)
+![Pipeline](https://user-images.githubusercontent.com/49449000/183419490-7ed52bc9-2941-4b2a-8abf-fc7496b432ac.png | width=400)
 
 
 
