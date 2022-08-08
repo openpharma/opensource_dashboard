@@ -17,16 +17,15 @@ You are in the front-end repository of openpharma. The global project include 3 
 <img src="https://user-images.githubusercontent.com/49449000/183419490-7ed52bc9-2941-4b2a-8abf-fc7496b432ac.png" width="600"/>
 
 
-
 # 1. Techonologies and structure of the repo
 
-We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the webapp. We also added custom html/css using [Boostrap 5.2](https://getbootstrap.com/).
+We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the webapp. We also added custom html/css using [Boostrap 5.2](https://getbootstrap.com/). The repository follows the current organisation :
 
 ```bash
 .
-├── LM-L6-BERT  📁 folder with BERT model - used for make inference with the search bar
+├── LM-L6-BERT  📁(folder with BERT model - used for make inference with the search bar)
 │   └── ....... 
-├── apps         📁 pages for the webapp
+├── apps         📁(pages for the webapp)
 │   ├── about.py
 │   ├── activity.py
 │   ├── leaderboard.py
@@ -45,20 +44,32 @@ We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the w
 │   ├── leaderboard.css
 │   ├── openissues.css
 │   └── pharmapackages.css
-├── Dockerfile     🐳 Dockerfile for deployment
+├── Dockerfile     🐳(Dockerfile for deployment)
 ├── README.md
-├── app.py    📄 streamlit app main page -> entrypoint to naviagte through menu
+├── app.py    📄(streamlit app main page -> entrypoint to naviagte through menu)
 ├── requirements.txt
 ├── setup.sh
-└── utils.py  📄 Menu definition
+└── utils.py  📄(Menu definition)
 ```
 
+# 2. Run the app locally
 
-## Deployment on Heroku - Test
+Prerequisites : 
+- Python >= 3.9
 
 
+```bash
+git clone https://github.com/openpharma/opensource_dashboard.git
+cd <PATH_TO_THE_CLONE>
+```
 
-Using dockerfile
+In your virtual environnement :
+```bash
+pip install -r requirements.txt
+```
+```bash
+streamlit run app.py
+```
 
 
 ## Aims
