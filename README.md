@@ -7,47 +7,50 @@ The objective of openpharma is to provide a neutral home for open source softwar
 ## Global pipeline
 
 You are in the front-end repository of openpharma. The global project include 3 repositories :
- - Data crawler : https://github.com/openpharma/openpharma.github.io
- - ML for search bar and data categorization : https://github.com/openpharma/openpharma_ml
- - Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
+ ⚙️ Data crawler : https://github.com/openpharma/openpharma.github.io
+ 🤖 ML for search bar and data categorization : https://github.com/openpharma/openpharma_ml
+ 📊 Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
 
 
 <img src="https://user-images.githubusercontent.com/49449000/183419490-7ed52bc9-2941-4b2a-8abf-fc7496b432ac.png" width="600"/>
 
 
 
-# 1. Global structure of the repo
+# 1. Techonologies and structure of the repo
+
+We are using Python 3.9.x and Streamlit to create the webapp. We also added
 
 ```bash
 .
-├── LM-L6-BERT  :open_file_folder:(folder with BERT model for search bar)
+├── LM-L6-BERT  📁 folder with BERT model - used for make inference with the search bar
 │   └── ....... 
-├── apps         🟢(pages for the webappp)
+├── apps         📁 pages for the webapp
 │   ├── about.py
 │   ├── activity.py
 │   ├── leaderboard.py
 │   ├── openissues.py
 │   └── pharmapackages.py
-├── python_functions       🟢(functions to handle dataframe and add custom html/css)
+├── python_functions       📁 functions to handle dataframe and add custom html/css
 │   ├── df_activity.py
 │   ├── df_leaderboard.py
 │   ├── df_openissues.py
 │   ├── df_pharmpack.py
 │   └── search_engine.py
-├── style                  🟢(CSS fo custom html components)
+├── style                  📁 CSS fo custom html components
 │   ├── about.css
 │   ├── activity.css
 │   ├── header.css
 │   ├── leaderboard.css
 │   ├── openissues.css
 │   └── pharmapackages.css
-├── Dockerfile
+├── Dockerfile     🐳 Dockerfile for deployment
 ├── README.md
-├── app.py    🟢(streamlit app main page -> entrypoint to naviagte through menu)
+├── app.py    📄 streamlit app main page -> entrypoint to naviagte through menu
 ├── requirements.txt
 ├── setup.sh
-└── utils.py  🟢(Menu definition)
+└── utils.py  📄 Menu definition
 ```
+
 
 ## Deployment on Heroku - Test
 
