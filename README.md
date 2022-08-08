@@ -23,9 +23,9 @@ We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the w
 
 ```bash
 .
-├── LM-L6-BERT  📁(folder with BERT model - used for make inference with the search bar)
+├── LM-L6-BERT  📁(folder with BERT model - used to make inference with the search bar)
 │   └── ....... 
-├── apps         📁(pages for the webapp)
+├── apps         📁(pages of the web app)
 │   ├── about.py
 │   ├── activity.py
 │   ├── leaderboard.py
@@ -37,7 +37,7 @@ We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the w
 │   ├── df_openissues.py
 │   ├── df_pharmpack.py
 │   └── search_engine.py
-├── style                  📁 CSS fo custom html components
+├── style                  📁 CSS for custom html components
 │   ├── about.css
 │   ├── activity.css
 │   ├── header.css
