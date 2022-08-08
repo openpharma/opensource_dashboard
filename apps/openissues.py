@@ -14,9 +14,9 @@ def page_content():
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
         
-        st.header("Label")
+        st.header("Tags")
         label_openissues = st.multiselect(
-            label='Select Multiple categories',
+            label='Select Multiple tags',
             options=['good first issue', 'help wanted', 'discussion', 'good first issue, help wanted', 'bug'],
             default=[]
         )

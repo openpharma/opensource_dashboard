@@ -9,8 +9,6 @@ def page_content():
     st.header("About Open pharma")
     
     manifesto = rf"""
-
-
     <p style="font-size: 1.3em;">The objective of openpharma is to provide a neutral home for open source software related to pharmaceutical industry that is not tied to one company or institution.</p>
     <p id="title_main_obj">Main objectives</p>
     <div class="row icon_objective_open">
