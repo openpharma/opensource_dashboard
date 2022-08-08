@@ -1,3 +1,9 @@
 .DS_Store
 pycache/
-inference_description.pt
+inference_description.pt# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore# Elastic Beanstalk Files
+.elasticbeanstalk/*
+.git
+.gitignore

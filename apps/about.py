@@ -11,7 +11,7 @@ def page_content():
     manifesto = rf"""
 
 
-    <p style="font-size: 1.3em;">The objective of the Github organisation github.com/openpharm (openpharma) is to provide a neutral home for open source software that is not tied to one company or institution.</p>
+    <p style="font-size: 1.3em;">The objective of openpharma is to provide a neutral home for open source software related to pharmaceutical industry that is not tied to one company or institution.</p>
     <p id="title_main_obj">Main objectives</p>
     <div class="row icon_objective_open">
             <div class="col-md-3 d-md-inline"><span>&#128218;</span> <p>Find a relevant package using advanced search filter and NLP</p></div>
