@@ -20,7 +20,7 @@ You are in the front-end repository of openpharma. The global project include 3 
 
 ```bash
 .
-├── LM-L6-BERT 🟢(folder with BERT model for search bar)
+├── LM-L6-BERT  :open_file_folder:(folder with BERT model for search bar)
 │   └── ....... 
 ├── apps         🟢(pages for the webappp)
 │   ├── about.py
