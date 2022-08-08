@@ -23,6 +23,7 @@ Probably move to AWS BeansTalk or Fargate
 
 # 1. Global structure of the repo
 
+'''
 .
 ├── LM-L6-BERT (folder with BERT model for search bar)
 │   └── ....... 
@@ -51,7 +52,7 @@ Probably move to AWS BeansTalk or Fargate
 ├── requirements.txt
 ├── setup.sh
 └── utils.py  (Menu definition)
-
+'''
 
 ## Deployment on Heroku - Test
 
@@ -70,32 +71,4 @@ Using dockerfile
 The following project is trying to define the final scope: https://github.com/openpharma/opensource_dashboard/projects/1
 
 
-.
-├── LM-L6-BERT (folder with BERT model for search bar)
-│   └── ....... 
-├── apps         (pages for the webappp)
-│   ├── about.py
-│   ├── activity.py
-│   ├── leaderboard.py
-│   ├── openissues.py
-│   └── pharmapackages.py
-├── python_functions       (functions to handle dataframe and add custom html/css)
-│   ├── df_activity.py
-│   ├── df_leaderboard.py
-│   ├── df_openissues.py
-│   ├── df_pharmpack.py
-│   └── search_engine.py
-├── style                  (CSS fo custom html components)
-│   ├── about.css
-│   ├── activity.css
-│   ├── header.css
-│   ├── leaderboard.css
-│   ├── openissues.css
-│   └── pharmapackages.css
-├── Dockerfile
-├── README.md
-├── app.py    (streamlit app main page -> entrypoint to naviagte through menu)
-├── requirements.txt
-├── setup.sh
-└── utils.py  (Menu definition)
 
