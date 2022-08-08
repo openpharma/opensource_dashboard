@@ -23,7 +23,7 @@ Probably move to AWS BeansTalk or Fargate
 
 # 1. Global structure of the repo
 
-'''
+```bash
 .
 ├── LM-L6-BERT (folder with BERT model for search bar)
 │   └── ....... 
@@ -52,7 +52,7 @@ Probably move to AWS BeansTalk or Fargate
 ├── requirements.txt
 ├── setup.sh
 └── utils.py  (Menu definition)
-'''
+```
 
 ## Deployment on Heroku - Test
 
