@@ -52,6 +52,21 @@ We are using Python 3.9.x and [Streamlit](https://streamlit.io/) to create the w
 └── utils.py  📄 (Menu definition)
 ```
 
+
+The entry point of the app is the file ```📄app.py``` at the root of the project. From this
+file, we are calling utils.py which contains menu defintion. In the folder apps, we have 5
+files corresponding to the 5 pages. Each of them is used to render streamlit widgets and
+calling corresponding functions from the folder python_functions. In the style folder,
+we have the css files for styling the page. The folder LM-L6-BERT is an hard copy of
+a pretrained NLP model from hugging face. It is used to make inference given a query
+in the search bar and gives relevant match for this query. Finally, we have Dockerfile,
+setup.sh and requirements.txt used for the deployment.
+To understand the interactions in more depth, if we are in the page "Open Issues",
+the server will execute the app.py file. This file will then call utils.py to display the
+menu and apps/openissues.py to display the current page. openissues.py will call the
+functions contained in python_functions/df_openissues.py to read the data, render the
+corresponding HTML and display it given the filters applied by the user
+
 # 2. Run the app locally
 
 Prerequisites : 
