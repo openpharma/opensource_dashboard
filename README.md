@@ -64,7 +64,7 @@ in the search bar and gives relevant match for this query. Finally, we have ```�
 ```📄 setup.sh``` and ```📄 requirements.txt``` used for the deployment.
 
 To understand the interactions in more depth, if we are in the page "Open Issues",
-the server will execute the ```📄 app.py``` file. This file will then call utils.py to display the
+the server will execute the ```📄 app.py``` file. This file will then call ```📄 utils.py``` to display the
 menu and ```📄 apps/openissues.py``` to display the current page. ```📄 openissues.py``` will call the
 functions contained in ```📄 python_functions/df_openissues.py``` to read the data, render the
 corresponding HTML and display it given the filters applied by the user
