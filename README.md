@@ -19,7 +19,7 @@ You are in the front-end repository of openpharma. The global project include 3 
 
 # 1. Techonologies and structure of the repo
 
-We are using Python 3.9.x and [Streamlit](https://streamlit.io/) 1.11.1 to create the webapp. We also added custom HTML/CSS using [Boostrap 5.2](https://getbootstrap.com/). We are also using [SentenceTransformers](https://www.sbert.net/) 2.2.2 and Pytorch(https://pytorch.org/) 1.12 The repository follows the current organisation :
+We are using Python 3.9.x and [Streamlit](https://streamlit.io/) 1.11.1 to create the webapp. We also added custom HTML/CSS using [Boostrap 5.2](https://getbootstrap.com/). We are also using [SentenceTransformers](https://www.sbert.net/) 2.2.2 and [Pytorch](https://pytorch.org/) 1.12 The repository follows the current organisation :
 
 ```bash
 .
