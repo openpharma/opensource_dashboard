@@ -2,7 +2,7 @@ from typing import List
 import markdown
 import pandas as pd
 import streamlit as st
-
+from python_functions import search_engine
 
 @st.cache(suppress_st_warning=True)
 def read_data_openissues(path: str) -> pd.DataFrame:
@@ -18,20 +18,24 @@ def filter_df(df: pd.DataFrame,
     search_bar: str=''
     ) -> pd.DataFrame:
 
+    if search_bar != "":
+        embed_corpus = search_engine.read_copy_tensor_openissues()
+        result_index = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
+        df = df.reindex(result_index[1].tolist())
     #Categories filter
     if len(label) >= 1:
         df = df[df['label'].isin(label)]
 
     df = df[(df['days_no_activity'] >= day_no_activity[0]) & (df['days_no_activity'] <= day_no_activity[1]) & (df['comments'] >= nb_comments[0]) & (df['comments'] <= nb_comments[1]) & (df['author_status'].isin(author_status))]
 
-    list_search = search_bar.lower().split()
-    rstr = '|'.join(list_search)
-    df = df[df['title'].str.lower().str.contains(rstr) | df['body'].str.lower().str.contains(rstr)]
     return df
 
 def display_data(df) -> List[str]:
     l_data = []
-    nb_cards = 30
+    if len(df) >= 30:
+        nb_cards = 30
+    else:
+        nb_cards = len(df)
     pack_name = df['full_name'][:nb_cards].tolist()
     pack_icon = df['icon_package'][:nb_cards].tolist()
     issue_day = df['days_no_activity'][:nb_cards].tolist()

@@ -38,7 +38,7 @@ def filter_df(
 
     # BERT Model
     if search_bar != "":
-        embed_corpus = search_engine.read_copy_tensor()
+        embed_corpus = search_engine.read_copy_tensor_packages()
         result_index = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
         df = df.reindex(result_index[1].tolist())
     # General filter

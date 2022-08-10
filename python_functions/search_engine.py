@@ -4,11 +4,19 @@ import torch
 import requests
 
 @st.cache(suppress_st_warning=True)
-def read_copy_tensor():
-    path_inference = 'https://openpharma.s3.us-east-2.amazonaws.com/ml/inference_description.pt'
+def read_copy_tensor_packages():
+    path_inference = 'https://openpharma.s3.us-east-2.amazonaws.com/ml/inference_packages.pt'
     response = requests.get(path_inference)
-    open("inference_description.pt", "wb").write(response.content)
-    embed_corpus = torch.load("inference_description.pt")
+    open("inference_packages.pt", "wb").write(response.content)
+    embed_corpus = torch.load("inference_packages.pt")
+    return embed_corpus
+
+@st.cache(suppress_st_warning=True)
+def read_copy_tensor_openissues():
+    path_inference = 'https://openpharma.s3.us-east-2.amazonaws.com/ml/inference_openissues.pt'
+    response = requests.get(path_inference)
+    open("inference_openissues.pt", "wb").write(response.content)
+    embed_corpus = torch.load("inference_openissues.pt")
     return embed_corpus
 
 
