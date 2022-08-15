@@ -4,7 +4,7 @@ name: Deploy to AWS.
 # Run workflow on every push to master branch.
 on:
   push:
-    branches: [AWS_ECR]
+    branches: []
 
 # Your workflows jobs.
 jobs:
@@ -40,15 +40,4 @@ jobs:
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: openpharma
-          environment_name: Openpharma-env-1
-          version_label: 12345
-          region: us-east-1
-          deployment_package: Dockerrun.aws.json
       
