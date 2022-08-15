@@ -34,3 +34,5 @@ def page_content():
     </ul>
     """
     st.markdown(manifesto, unsafe_allow_html=True)
+
+    st.header("If you see me, then AWS CI/CD is working")
