@@ -15,7 +15,7 @@ def page_content():
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
         
-        st.header("Only packages from pharmaverse")
+        st.header("Only pharmaverse packages")
         agree_pharmaverse = st.checkbox('Yes')
 
         st.header("Categories")
@@ -37,13 +37,15 @@ def page_content():
             options=('All', 'R', 'Python'),
             index=0
         )
-        st.header("Risk Metrics")
+        st.header("OS health")
         risk_metric = st.slider(
             label="0 = Low maintainability ; 100 = High maintainability",
             min_value=0,
             max_value=100, 
             value=(0, 100)
         )
+
+        ## Add riskmetric only on filter
 
         st.header("License")
         license_law = st.radio(

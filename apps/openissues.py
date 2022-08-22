@@ -13,6 +13,8 @@ def page_content():
 
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
+
+        ## Add pharmaverse filter
         
         st.header("Tags")
         label_openissues = st.multiselect(

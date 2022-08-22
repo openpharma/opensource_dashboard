@@ -3,6 +3,8 @@ import pandas as pd
 from random import randint
 from python_functions import df_activity
 
+## Add pharmaverse and overall filters on all metrics
+
 def page_content():
     """Read and display data"""
 
