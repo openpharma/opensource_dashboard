@@ -4,8 +4,10 @@ import pandas as pd
 import streamlit as st
 from python_functions import search_engine
 
+PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
+
 @st.cache(suppress_st_warning=True)
-def read_data_openissues(path: str) -> pd.DataFrame:
+def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
 
@@ -15,7 +17,8 @@ def filter_df(df: pd.DataFrame,
     day_no_activity: int=0,
     nb_comments: int=0,
     author_status: List[str]=None,
-    search_bar: str=''
+    search_bar: str='',
+    pharmaverse: bool=False
     ) -> pd.DataFrame:
 
     if search_bar != "":
@@ -25,6 +28,12 @@ def filter_df(df: pd.DataFrame,
     #Categories filter
     if len(label) >= 1:
         df = df[df['label'].isin(label)]
+    
+    # Filter on pharmaverse packages only
+    if pharmaverse:
+        df_pharmaverse = read_df(PATH_PHARMAVERSE)
+        l_pharmaverse = df_pharmaverse['full_name'].to_list()
+        df = df[df['full_name'].isin(l_pharmaverse)]
 
     df = df[(df['days_no_activity'] >= day_no_activity[0]) & (df['days_no_activity'] <= day_no_activity[1]) & (df['comments'] >= nb_comments[0]) & (df['comments'] <= nb_comments[1]) & (df['author_status'].isin(author_status))]
 

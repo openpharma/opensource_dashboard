@@ -5,7 +5,7 @@ def page_content():
     """Read and display data"""
 
     PATH = "http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv"
-    df = df_pharmpack.read_data_repos(PATH)
+    df = df_pharmpack.read_df(PATH)
 
     with open('style/pharmapackages.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -25,7 +25,7 @@ def page_content():
         )
 
         st.header("Number of contributors")
-        min_nb_contrib = st.slider(
+        nb_contribs = st.slider(
             label="Choose a range of values",
             min_value=0, 
             max_value=150, 
@@ -38,14 +38,20 @@ def page_content():
             index=0
         )
         st.header("OS health")
-        risk_metric = st.slider(
-            label="0 = Low maintainability ; 100 = High maintainability",
+        os_health = st.slider(
+            label="0 = Low health ; 100 = High health",
             min_value=0,
             max_value=100, 
             value=(0, 100)
         )
 
-        ## Add riskmetric only on filter
+        st.header("Risk metric")
+        risk_metric = st.slider(
+            label="0 = Low risk ; 100 = High risk",
+            min_value=0,
+            max_value=100, 
+            value=(0, 100)
+        )
 
         st.header("License")
         license_law = st.radio(
@@ -62,7 +68,16 @@ def page_content():
     
     #HTML CARDS
 
-    df_clean = df_pharmpack.filter_df(df,categories_topics,min_nb_contrib,prog_language,risk_metric,license_law,search_bar, agree_pharmaverse)
+    df_clean = df_pharmpack.filter_df(df=df,
+        categories = categories_topics,
+        nb_contribs = nb_contribs,
+        language = prog_language,
+        risk_metrics = risk_metric,
+        os_health = os_health,
+        license = license_law,
+        search_bar = search_bar,
+        pharmaverse = agree_pharmaverse
+    )
     #st.dataframe(df_clean)
 
     col1, col2 = st.columns([1,1])

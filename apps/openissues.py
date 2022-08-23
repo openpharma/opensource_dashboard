@@ -6,7 +6,7 @@ def page_content():
     """Read and display data"""
     
     PATH = 'http://openpharma.s3-website.us-east-2.amazonaws.com/help_clean.csv'
-    df = df_openissues.read_data_openissues(PATH)
+    df = df_openissues.read_df(PATH)
 
     with open('style/openissues.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
@@ -14,7 +14,8 @@ def page_content():
     with st.sidebar:
         st.title(":hammer_and_pick: Filter")
 
-        ## Add pharmaverse filter
+        st.header("Only pharmaverse packages")
+        pharmaverse = st.checkbox('Yes')
         
         st.header("Tags")
         label_openissues = st.multiselect(
@@ -24,7 +25,7 @@ def page_content():
         )
 
         st.header("Days since last comment")
-        days_openissues = st.slider(
+        day_no_activity = st.slider(
             label="Choose a range of values",
             min_value=0, 
             max_value=200, 
@@ -40,7 +41,7 @@ def page_content():
         )
 
         st.header("Author status")
-        label_creator = st.multiselect(
+        author_status = st.multiselect(
             label='Select creator type',
             options=['MEMBER', 'NONE', 'COLLABORATOR'],
             default=['MEMBER', 'NONE', 'COLLABORATOR']
@@ -52,8 +53,15 @@ def page_content():
         placeholder='Search across open issues to contribute'
     )
 
+    df_issue = df_openissues.filter_df(df = df, 
+        label = label_openissues,
+        day_no_activity = day_no_activity,
+        nb_comments = nb_comments,
+        author_status = author_status,
+        search_bar = search_bar,
+        pharmaverse = pharmaverse
+    )
 
-    df_issue = df_openissues.filter_df(df, label_openissues, days_openissues, nb_comments, label_creator, search_bar)
     df_issue = df_issue.sort_values(by=['days_no_activity'], ascending=True, ignore_index=True)
     #st.dataframe(df_issue)
     l_components = df_openissues.display_data(df_issue)

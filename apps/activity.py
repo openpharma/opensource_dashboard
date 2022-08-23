@@ -1,3 +1,4 @@
+from datetime import datetime
 import streamlit as st
 import pandas as pd
 from random import randint
@@ -16,17 +17,24 @@ def page_content():
 
     PATH_REPO = "http://openpharma.s3-website.us-east-2.amazonaws.com/repos_clean.csv"
     PATH_COMMITS = "https://openpharma.s3.us-east-2.amazonaws.com/commits.csv"
-    df_repos = df_activity.read_repos(PATH_REPO)
-    df_commits = df_activity.read_commits(PATH_COMMITS)
-    active_repo, evol_repo = df_activity.repo_contrib_activity(df_commits, "full_name")
-    active_contrib, evol_contrib = df_activity.repo_contrib_activity(df_commits, "author")
 
+    df_repos = df_activity.read_df(PATH_REPO)
+    df_commits = df_activity.read_df(PATH_COMMITS)
+
+    pharmaverse = st.selectbox(
+        'Choose the scope of the activity : all packages or pharmaverse packages',
+        ('All packages', 'Pharmaverse')
+    )
+
+    active_repo, evol_repo = df_activity.repo_contrib_activity(df_commits, pharmaverse, "full_name")
+    active_contrib, evol_contrib = df_activity.repo_contrib_activity(df_commits, pharmaverse, "author")
+    length_pack = df_activity.packages_count(df_repos, pharmaverse)
 
     col1, col2, col3 = st.columns(3)
 
     col1.metric(
         "Nb of packages", 
-        "{nb}".format(nb=len(df_repos))
+        "{nb}".format(nb=length_pack)
     )
 
     col2.metric(
@@ -41,10 +49,7 @@ def page_content():
         "{nb}%".format(nb=evol_contrib)
     )
     
-    st.header("!not real data for the moment! Cumulative trend of #contributors and #repos")
-    chart_data = pd.DataFrame(
-        [[randint(60, 120), randint(80, 200)] for i in range(0, 100)],
-        columns=['Contributors', 'Repos']
-    )
+    st.header("Active repositories and people defined by monthly commits")
+    chart_data = df_activity.activity_line_chart(df_commits, pharmaverse, datetime(2020,1,1))
 
-    st.line_chart(chart_data)
+    st.line_chart(chart_data[["full_name", "author_clean"]].rename(columns={"full_name": "Nb of Active repositories", "author_clean": "Nb of contributors"}))

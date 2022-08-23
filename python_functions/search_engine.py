@@ -25,6 +25,7 @@ class SearchEngine:
         self.embed_corpus = embed_corpus
 
     def fit(self, query):
+        print(query)
         query = query.lower()
         embedder = SentenceTransformer('LM-L6-BERT')
         self.embed_query = embedder.encode(query, convert_to_tensor=True)

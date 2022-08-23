@@ -7,14 +7,8 @@ from python_functions import search_engine
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
 
-
 @st.cache(suppress_st_warning=True)
-def read_pharmaverse_package(path: str) -> pd.DataFrame:
-    df = pd.read_csv(path)
-    return df
-
-@st.cache(suppress_st_warning=True)
-def read_data_repos(path: str) -> pd.DataFrame:
+def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
 
@@ -31,6 +25,7 @@ def filter_df(
     nb_contribs: tuple=(0,150),
     language: str='All',
     risk_metrics: int=0,
+    os_health: int=0,
     license: str='All',
     search_bar: str='',
     pharmaverse: bool=False
@@ -42,7 +37,7 @@ def filter_df(
         result_index = search_engine.SearchEngine(embed_corpus).fit(search_bar).predict(20)
         df = df.reindex(result_index[1].tolist())
     # General filter
-    df = df[(df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['risk_column'] >= risk_metrics[0]) & (df['risk_column'] <= risk_metrics[1])]
+    df = df[(df['Contributors'] >= nb_contribs[0]) & (df['Contributors'] <= nb_contribs[1]) & (df['riskmetric_score'] >= risk_metrics[0]) & (df['riskmetric_score'] <= risk_metrics[1]) & (df['os_health'] >= os_health[0]) & (df['os_health'] <= os_health[1])]
 
     #Categories filter
     if len(categories) >= 1:
@@ -51,7 +46,7 @@ def filter_df(
     
     # Filter on pharmaverse packages only
     if pharmaverse:
-        df_pharmaverse = read_pharmaverse_package(PATH_PHARMAVERSE)
+        df_pharmaverse = read_df(PATH_PHARMAVERSE)
         l_pharmaverse = df_pharmaverse['full_name'].to_list()
         df = df[df['full_name'].isin(l_pharmaverse)]
 
@@ -87,9 +82,9 @@ def display_data(df: pd.DataFrame) -> List[str]:
     org = df['org'][:nb_cards].tolist()
     contrib = df['Contributors'][:nb_cards].tolist()
     last_commit = df['last_commit_d'][:nb_cards].tolist()
-    risk_metric = df['risk_column'][:nb_cards].tolist()
-    risk_color = ['bg-success' if (x >=  53) else 'bg-warning' if (x >= 21) else 'bg-danger' for x in risk_metric]
-    risk_width_color = ["auto" if (x >=  53) else "15px" if (x >= 21) else "15px" for x in risk_metric]
+    oshealth_metric = df['os_health'][:nb_cards].tolist()
+    risk_color = ['bg-success' if (x >=  53) else 'bg-warning' if (x >= 21) else 'bg-danger' for x in oshealth_metric]
+    risk_width_color = ["auto" if (x >=  53) else "15px" if (x >= 21) else "15px" for x in oshealth_metric]
     if len(pack_name) >= 1:
         for i in range(0, len(pack_name)):
             
@@ -146,10 +141,10 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                     <p class="p-0">Since last<br /> commit</p>
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-4 text-center align-top reliability_info">
-                                    <p><dfn data-info="The reliability score is based on the average of 2 metrics : os-health (openpharma.github.io/os-health.html) and riskmetric (pharmar.github.io/riskmetric/index.html)">Reliability &#x24D8;</dfn></p>
+                                    <p><dfn data-info="The os health score is based on openpharma.github.io/os-health.html">Os-Health &#x24D8;</dfn></p>
                                         <div class="progress">
-                                            <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {int(risk_metric[i])}%" role="progressbar" aria-valuenow="{risk_metric[i]}" aria-valuemin="0" aria-valuemax="100">
-                                            <p style="width: {risk_width_color[i]};">{int(risk_metric[i])}</p>
+                                            <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {int(oshealth_metric[i])}%" role="progressbar" aria-valuenow="{oshealth_metric[i]}" aria-valuemin="0" aria-valuemax="100">
+                                            <p style="width: {risk_width_color[i]};">{int(oshealth_metric[i])}</p>
                                         </div>
                                     </div>
                                 </div>
