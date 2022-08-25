@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 def page_content():
     """Read and display data"""
 
