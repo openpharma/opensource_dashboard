@@ -1,4 +1,4 @@
-# Open pharma dashboard
+# Open pharma dashboard <img src="logo.png" align="right" width="200" style="margin-left:50px;"/>
 
 The objective of openpharma is to provide a neutral home for open source software related to pharmaceutical industry that is not tied to one company or institution. https://open-pharma.herokuapp.com/
 
