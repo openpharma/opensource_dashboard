@@ -15,7 +15,7 @@ def page_content():
     <div class="row icon_objective_open">
             <div class="col-md-3 d-md-inline"><span>&#128218;</span> <p>Find a relevant package using advanced search filter and NLP</p></div>
             <div class="col-md-3 d-md-inline"><span>&#128161;</span><p>Know more about a package such as purpose, description, organisations, contributors, reliability and advanced insights</p></div>
-            <div class="col-md-3 d-md-inline"><span>&#128588;</span><p>Know more about the comunnity : best contributors and active teammate</p></div>
+            <div class="col-md-3 d-md-inline"><span>&#128588;</span><p>Know more about the community : best contributors and active teammates</p></div>
             <div class="col-md-3 d-md-inline"><span>&#128170;</span><p>Display urgent open issues and encourage people to contribute</p></div>
     </div>
 
