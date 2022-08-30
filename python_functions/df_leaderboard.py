@@ -2,7 +2,7 @@ from typing import List
 import pandas as pd
 import streamlit as st
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, ttl=43200)
 def read_data_leaderboard(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df

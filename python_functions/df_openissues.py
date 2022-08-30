@@ -6,7 +6,7 @@ from python_functions import search_engine
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
 
-@st.cache(suppress_st_warning=True)
+@st.cache(suppress_st_warning=True, ttl=43200)
 def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df

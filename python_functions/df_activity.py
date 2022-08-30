@@ -6,7 +6,7 @@ import streamlit as st
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
 
-@st.cache(allow_output_mutation=True)
+@st.cache(allow_output_mutation=True, ttl=43200)
 def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
