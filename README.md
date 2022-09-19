@@ -87,14 +87,19 @@ In your virtual environnement :
 # 3. Deployment on Elastic Beanstalk using ECR (Elastic Container Registry)
 
 * Push the docker image to ECR using Github Actions (automatic)
+
 * Create a Beanstalk instance this way :
-  * Create an Beanstalk application
+  * Create a Beanstalk application
   * Create an environnement using the platform Docker
-  * Set Instances size to 12GB of SSD
-  * Set Instances types to t2.small and t2.medium
-* Set ```AmazonEC2ContainerRegistryReadOnly``` policy to ```aws-elasticbeanstalk-ec2-role```in IAM AWS Service. https://stackoverflow.com/questions/44850578/aws-elastic-beanstalk-with-amazon-ecr-docker-image
-* Go in your environnements, click on Upload and deploy button. Upload the file called ```Dockerrun.aws.json``` on this repo. Make sure that the image name inside this json file correspond to the image name in ECR.
-* Click on Actions and rebuild environnements.
+  * In Configuration, set Instances size to 12GB of SSD
+  * In Configuration, set Instances types to t2.small and t2.medium
+  
+* Go in IAM Service and set ```AmazonEC2ContainerRegistryReadOnly``` policy to ```aws-elasticbeanstalk-ec2-role``` as explained in this link https://stackoverflow.com/questions/44850578/aws-elastic-beanstalk-with-amazon-ecr-docker-image
+
+* Go in your environnement, click on Upload and deploy button. Upload the file called ```Dockerrun.aws.json``` on this repo. Make sure that the image name inside the JSON file corresponds to the image name in ECR. (something like 8XXXXXXXXXX8.dkr.ecr.us-east-1.amazonaws.com/openpharma-docker:latest)
+
+* Click on Actions and rebuild environnement.
+
 
 ## Aims
 
