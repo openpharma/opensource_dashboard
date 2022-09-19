@@ -1,7 +1,7 @@
 {
     "AWSEBDockerrunVersion": "1",
     "Image": {
-      "Name": "114747781021.dkr.ecr.us-east-1.amazonaws.com/openpharma-docker:latest",
+      "Name": "864327297904.dkr.ecr.us-east-1.amazonaws.com/openpharma-docker:latest",
       "Update": "true"
     },
     "Ports": [
