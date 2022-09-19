@@ -84,6 +84,17 @@ In your virtual environnement :
 (vitual_env)$ streamlit run app.py
 ```
 
+# 3. Deployment on Elastic Beanstalk using ECR (Elastic Container Registry)
+
+* Push the docker image to ECR using Github Actions (automatic)
+* Create a Beanstalk instance this way :
+  * Create an Beanstalk application
+  * Create an environnement using the platform Docker
+  * Set Instances size to 12GB of SSD
+  * Set Instances types to t2.small and t2.medium
+* Set ```AmazonEC2ContainerRegistryReadOnly``` policy to ```aws-elasticbeanstalk-ec2-role```in IAM AWS Service. https://stackoverflow.com/questions/44850578/aws-elastic-beanstalk-with-amazon-ecr-docker-image
+* Go in your environnements, click on Upload and deploy button. Upload the file called ```Dockerrun.aws.json``` on this repo. Make sure that the image name inside this json file correspond to the image name in ECR.
+* Click on Actions and rebuild environnements.
 
 ## Aims
 
