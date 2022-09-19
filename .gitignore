@@ -1,6 +1,7 @@
 .DS_Store
 __pycache__/
 inference_description.pt
+inference_packages.pt
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

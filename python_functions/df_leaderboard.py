@@ -6,16 +6,6 @@ import streamlit as st
 def read_data_leaderboard(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
-
-def filter_df(df: pd.DataFrame):
-    try:
-        columns = ['avatar','author','Best_author', 'Best_replier','P_comments', 'P_reactions', 'FC_reactions', 'C_reactions', 'commits', 'contributed_to']
-        df = df.sort_values(by='Best_author', ascending=False)[columns].reset_index(drop=True)
-        df=df[columns]
-        df = df.rename(columns={'author': 'Username','Best_author': 'Best author on issues', 'Best_replier': 'Best replier on issues','P_comments': '#comments on my issues','P_reactions': '#reactions on my issues', 'FC_reactions': 'First comment','C_reactions': '#reactions on my comments', 'commits': '#commits', 'contributed_to': 'List repos'})
-    except:
-        pass
-    return df
         
 def path_to_image_html(path):
     return '<img src="'+ path + '" width="30"/>'
@@ -25,6 +15,7 @@ def display_data_categories(df: pd.DataFrame)-> List[str]:
     l_icon_metric = ["&#x1F468;&#x200D;&#x1F4BB;", "&#x1F450", "&#x1F9BE"]
     l_title_metric = ["Best coder", "Best altruist", "Best self maintainer"]
     df_coder = df.sort_values(by="coder_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "commits", "contributed_to"]]
+    df_coder["commits"] = df_coder["commits"].astype(int)
     df_altruist = df.sort_values(by="altruist_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "#comments_altruist", "#reactions_altruist", "#first_comments_altruist"]]
     df_maintainer = df.sort_values(by="self_maintainer_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "#comments_self_maintainer", "#reactions_self_maintainer", "#first_comments_self_maintainer"]]
     coder_dict = {

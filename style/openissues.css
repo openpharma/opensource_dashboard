@@ -107,17 +107,17 @@ padding-right: 0px;
 .big_circle {
   margin: 0;
   padding: 0;
-  width: 50px;
-  height: 50px;
-  border: 5px solid #4AA356;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #4AA356;
   border-radius: 35px;
 }
 
 .small_circle {
-  margin: 12px;
+  margin: 5px;
   background: #4AA356;
-  width: 16px;
-  height: 16px;
+  width: 4px;
+  height: 4px;
   border-radius: 10px;
 }
 

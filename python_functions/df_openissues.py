@@ -60,7 +60,10 @@ def display_data(df) -> List[str]:
             components = rf"""        
                     <div class="row">
                         <div class="col-sm-auto align-items-center d-inline-flex package_name">
-                            <img src="{pack_icon[i]}" alt="" height=16/>
+                            <div class="big_circle">
+                                        <div class="small_circle">
+                                        </div>
+                                    </div>
                             <h2 class="h2_remove_hover">{pack_name[i]}</h2>
                         </div>
                         <div class="col-sm-auto">
@@ -69,10 +72,7 @@ def display_data(df) -> List[str]:
                         <div class="card">
                             <div class="row">
                                 <div class="open_issue_icon d-none col-sm-2 align-items-center d-md-flex justify-content-center">
-                                    <div class="big_circle">
-                                        <div class="small_circle">
-                                        </div>
-                                    </div>
+                                    <img src="{pack_icon[i]}" alt="" height="50" />
                                 </div>
                                 <div class="col-sm-10">
                                     <h3 class="author_status h2_remove_hover"><u>Last active :</u> {issue_day[i]} d | <u>Author</u> : {issue_author[i]} - {issue_author_status[i]}</h3>

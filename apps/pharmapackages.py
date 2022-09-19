@@ -28,8 +28,8 @@ def page_content():
         nb_contribs = st.slider(
             label="Choose a range of values",
             min_value=0, 
-            max_value=150, 
-            value=(0, 150)
+            max_value=200, 
+            value=(0, 200)
         )
         st.header("Language")
         prog_language = st.radio(
@@ -63,7 +63,7 @@ def page_content():
     st.header(":mag: Search")
     search_bar = st.text_input(
         '',
-        placeholder='Search across more than 300 R packages related to pharma for your data formatting, analysis and plots'
+        placeholder='Search across more than 400 R packages related to pharma for your data formatting, analysis and plots'
     )
     
     #HTML CARDS

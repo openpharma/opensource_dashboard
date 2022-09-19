@@ -12,8 +12,6 @@ def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
 
-# as per recommendation from @freylis, compile once only
-
 def clean_html(raw_html: str):
     CLEANR = re.compile('<.*?>') 
     cleantext = re.sub(CLEANR, '', raw_html)
@@ -22,7 +20,7 @@ def clean_html(raw_html: str):
 def filter_df(
     df: pd.DataFrame,
     categories: List[str]=None,
-    nb_contribs: tuple=(0,150),
+    nb_contribs: tuple=(0,200),
     language: str='All',
     risk_metrics: int=0,
     os_health: int=0,
