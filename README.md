@@ -6,12 +6,19 @@ The objective of openpharma is to provide a neutral home for open source softwar
 
 # 0. General overview
 
-## Global pipeline
+## i. Objectives
+
+<img width="940" alt="Screenshot 2022-09-19 at 18 03 31" src="https://user-images.githubusercontent.com/49449000/191062166-c8a54c1a-e4b2-431d-b83c-a7811e247b4e.png">
+
+
+## ii. Global pipeline
 
 You are in the front-end repository of openpharma. The global project include 3 repositories :
  - ⚙️ Data crawler : https://github.com/openpharma/openpharma.github.io
  - 🤖 ML for search bar and data categorization : https://github.com/openpharma/openpharma_ml
  - 📊 Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
+ 
+ 
 
 # 1. Techonologies and structure of the repo
 
