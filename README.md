@@ -13,10 +13,6 @@ You are in the front-end repository of openpharma. The global project include 3 
  - 🤖 ML for search bar and data categorization : https://github.com/openpharma/openpharma_ml
  - 📊 Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
 
-
-<img src="https://user-images.githubusercontent.com/49449000/183419490-7ed52bc9-2941-4b2a-8abf-fc7496b432ac.png" width="600"/>
-
-
 # 1. Techonologies and structure of the repo
 
 We are using Python ```3.9.x``` and [Streamlit](https://streamlit.io/) ```1.11.1``` to create the webapp. We also added custom HTML/CSS using [Boostrap](https://getbootstrap.com/) ```5.2```. We are also using [SentenceTransformers](https://www.sbert.net/) ```2.2.2``` and [Pytorch](https://pytorch.org/) ```1.12``` The repository follows the current organisation :
@@ -74,7 +70,7 @@ corresponding HTML and display it given the filters applied by the user
 # 2. Run the app locally
 
 Prerequisites : 
-- Python >= 3.9
+- Python == 3.8
 
 
 ```bash
