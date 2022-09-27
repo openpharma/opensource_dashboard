@@ -6,12 +6,19 @@ The objective of openpharma is to provide a neutral home for open source softwar
 
 # 0. General overview
 
-## Global pipeline
+## i. Objectives
+
+<img width="940" alt="Screenshot 2022-09-19 at 18 03 31" src="https://user-images.githubusercontent.com/49449000/191062166-c8a54c1a-e4b2-431d-b83c-a7811e247b4e.png">
+
+
+## ii. Global pipeline
 
 You are in the front-end repository of openpharma. The global project include 3 repositories :
  - ⚙️ Data crawler : https://github.com/openpharma/openpharma.github.io
  - 🤖 ML for search bar and data categorization : https://github.com/openpharma/openpharma_ml
  - 📊 Front-end (current repo) : https://github.com/openpharma/opensource_dashboard
+ 
+ 
 
 # 1. Techonologies and structure of the repo
 
@@ -84,15 +91,21 @@ In your virtual environnement :
 (vitual_env)$ streamlit run app.py
 ```
 
+# 3. Deployment on Elastic Beanstalk using ECR (Elastic Container Registry)
 
-## Aims
+* Push the docker image to ECR using Github Actions (automatic)
 
-* Help me find a relevant package by 'NLP' to define topics/categories (e.g. all the table packages, or all ADaM packages)
-* Help me find 'similar' packages to one of interest
-* Help me understand more about this package (e.g. OS health, riskmetric scores, who works on it)
-* Help people discover where they could contribute to packages (e.g. open issues)
+* Create a Beanstalk instance this way :
+  * Create a Beanstalk application
+  * Create an environnement using the platform Docker
+  * In Configuration, set Instances size to 12GB of SSD
+  * In Configuration, set Instances types to t2.small and t2.medium
+  
+* Go in IAM Service and set ```AmazonEC2ContainerRegistryReadOnly``` policy to ```aws-elasticbeanstalk-ec2-role``` as explained in this link https://stackoverflow.com/questions/44850578/aws-elastic-beanstalk-with-amazon-ecr-docker-image
 
-The following project is trying to define the final scope: https://github.com/openpharma/opensource_dashboard/projects/1
+* Go in your environnement, click on Upload and deploy button. Upload the file called ```Dockerrun.aws.json``` on this repo. Make sure that the image name inside the JSON file corresponds to the image name in ECR. (something like 8XXXXXXXXXX8.dkr.ecr.us-east-1.amazonaws.com/openpharma-docker:latest)
+
+* Click on Actions and rebuild environnement.
 
 
 
