@@ -5,8 +5,10 @@ import streamlit as st
 from python_functions import search_engine
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
+PATH_CATEGORY = "http://openpharma.s3-website.us-east-2.amazonaws.com/ml/repos_categorization.csv"
 
-@st.cache(suppress_st_warning=True, ttl=43200)
+
+@st.cache(suppress_st_warning=True, ttl=14400)
 def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
@@ -45,16 +47,25 @@ def display_data(df) -> List[str]:
         nb_cards = 30
     else:
         nb_cards = len(df)
-    pack_name = df['full_name'][:nb_cards].tolist()
-    pack_icon = df['icon_package'][:nb_cards].tolist()
-    issue_day = df['days_no_activity'][:nb_cards].tolist()
-    issue_author = df['author'][:nb_cards].tolist()
-    issue_author_status = df['author_status'][:nb_cards].tolist()
-    issue_title = df['title'][:nb_cards].tolist()
-    issue_label = df['label'][:nb_cards].tolist()
-    issue_comments = df['comments'][:nb_cards].tolist()
-    issue_body = df['body'][:nb_cards].tolist()
-    
+    df = df.iloc[:nb_cards]
+    df_cg = read_df(PATH_CATEGORY)
+    df = df.merge(df_cg, how="left", on="full_name")
+    pack_name = df['full_name'].tolist()
+    pack_icon = df['icon_package'].tolist()
+    issue_day = df['days_no_activity'].tolist()
+    issue_author = df['author'].tolist()
+    issue_author_status = df['author_status'].tolist()
+    issue_title = df['title'].tolist()
+    issue_label = df['label'].tolist()
+    issue_comments = df['comments'].tolist()
+    issue_body = df['body'].tolist()
+    df['plots'] = df['plots'].apply(lambda x: ", plots" if x == True else "")
+    df['tables'] = df['tables'].apply(lambda x: ", tables" if x == True else "")
+    df['stats'] = df['stats'].apply(lambda x: ", stats" if x == True else "")
+    df['cdisc'] = df['cdisc'].apply(lambda x: ", CDISC" if x == True else "")
+    df['utilities'] = df['utilities'].apply(lambda x: ", utilities" if x == True else "")
+    issue_cg = [x1+x2+x3+x4+x5 for x1, x2, x3, x4, x5 in zip(df.plots, df.tables, df.stats, df.cdisc, df.utilities)]
+    issue_cg = [x[2:] if len(x) >= 2 else x for x in issue_cg]
     if len(pack_name) >= 1:
         for i in range(0, len(pack_name)):
             components = rf"""        
@@ -87,7 +98,7 @@ def display_data(df) -> List[str]:
                                         </div>
                                         <div class="pills d-inline-flex">
                                             <img src="https://github.githubassets.com/images/icons/emoji/unicode/1f511.png" alt="" height=13>
-                                            <p>plots, components, graphics, calculation, model</p>
+                                            <p>{issue_cg[i]}</p>
                                         </div>    
                                     </div>
                                 </div>

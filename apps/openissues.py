@@ -19,7 +19,7 @@ def page_content():
         
         st.header("Tags")
         label_openissues = st.multiselect(
-            label='Select Multiple tags',
+            label='Select tags',
             options=['good first issue', 'help wanted', 'discussion', 'good first issue, help wanted', 'bug'],
             default=[]
         )

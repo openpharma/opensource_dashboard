@@ -6,8 +6,9 @@ from python_functions import search_engine
 
 
 PATH_PHARMAVERSE = "http://openpharma.s3-website.us-east-2.amazonaws.com/pharmaverse_packages.csv"
+PATH_CATEGORY = "http://openpharma.s3-website.us-east-2.amazonaws.com/ml/repos_categorization.csv"
 
-@st.cache(suppress_st_warning=True, ttl=43200)
+@st.cache(suppress_st_warning=True, ttl=14400)
 def read_df(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
@@ -39,7 +40,11 @@ def filter_df(
 
     #Categories filter
     if len(categories) >= 1:
-        df = df[df['type'].isin(categories)]
+        df_cg = read_df(path=PATH_CATEGORY)
+        df = df.merge(df_cg, on="full_name", how="left")
+        categories = [x.lower() for x in categories]
+        for x in categories:
+            df = df[df[x] == True]
 
     
     # Filter on pharmaverse packages only
@@ -68,24 +73,24 @@ def display_data(df: pd.DataFrame) -> List[str]:
         nb_cards = 20
     else:
         nb_cards = len(df)
+    df = df.iloc[:nb_cards]
     df['last_commit_d'] = df['last_commit_d'].astype('Int64')
-    pack_img = df['icon_package'][:nb_cards].tolist()
-    lang_img = df['icon_package_link'][:nb_cards].tolist()
-    list_full_name = df['full_name'][:nb_cards].tolist()
+    pack_img = df['icon_package'].tolist()
+    lang_img = df['icon_package_link'].tolist()
+    list_full_name = df['full_name'].tolist()
     link_github = ["https://github.com/"+x for x in list_full_name]
-    pack_name = df['repo'][:nb_cards].tolist()
+    pack_name = df['repo'].tolist()
     link_cran = ["https://cran.r-project.org/web/packages/"+x+"/index.html" for x in pack_name]
     link_oss_insight = ["https://ossinsight.io/analyze/"+x for x in list_full_name]
-    descri = [clean_html(x) for x in df['description'][:nb_cards].tolist()]
-    org = df['org'][:nb_cards].tolist()
-    contrib = df['Contributors'][:nb_cards].tolist()
-    last_commit = df['last_commit_d'][:nb_cards].tolist()
-    oshealth_metric = df['os_health'][:nb_cards].tolist()
+    descri = [clean_html(x) for x in df['description'].tolist()]
+    org = df['org'].tolist()
+    contrib = df['Contributors'].tolist()
+    last_commit = df['last_commit_d'].tolist()
+    oshealth_metric = df['os_health'].tolist()
     risk_color = ['bg-success' if (x >=  53) else 'bg-warning' if (x >= 21) else 'bg-danger' for x in oshealth_metric]
     risk_width_color = ["auto" if (x >=  53) else "15px" if (x >= 21) else "15px" for x in oshealth_metric]
     if len(pack_name) >= 1:
         for i in range(0, len(pack_name)):
-            
             components = rf"""
                     <div class="row">
                         <div class="col-lg-12">

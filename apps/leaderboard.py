@@ -1,7 +1,7 @@
 import streamlit as st
 from python_functions import df_leaderboard
 
-## Calculate only on 12 last months
+## Calculated only on 12 last months
 
 def page_content():
     """Read and display data"""

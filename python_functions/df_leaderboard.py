@@ -2,7 +2,7 @@ from typing import List
 import pandas as pd
 import streamlit as st
 
-@st.cache(suppress_st_warning=True, ttl=43200)
+@st.cache(suppress_st_warning=True, ttl=14400)
 def read_data_leaderboard(path: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     return df
@@ -13,7 +13,7 @@ def path_to_image_html(path):
 def display_data_categories(df: pd.DataFrame)-> List[str]:
     l_data = []
     l_icon_metric = ["&#x1F468;&#x200D;&#x1F4BB;", "&#x1F450", "&#x1F9BE"]
-    l_title_metric = ["Best coder", "Best altruist", "Best self maintainer"]
+    l_title_metric = ["Coder", "Altruist", "Self maintainer"]
     df_coder = df.sort_values(by="coder_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "commits", "contributed_to"]]
     df_coder["commits"] = df_coder["commits"].astype(int)
     df_altruist = df.sort_values(by="altruist_metric", ascending=False)[:3].reset_index(drop=True)[["author", "avatar", "#comments_altruist", "#reactions_altruist", "#first_comments_altruist"]]
@@ -34,7 +34,7 @@ def display_data_categories(df: pd.DataFrame)-> List[str]:
         "text": ["{} comments | {} first replies | {} reactions".format(df_maintainer["#comments_self_maintainer"][i].astype(int), df_maintainer["#first_comments_self_maintainer"][i].astype(int), df_maintainer["#reactions_self_maintainer"][i].astype(int)) for i in range(0,3)]
     }
     l_users = [coder_dict, altruist_dict, maintainer_dict]
-    l_metrics_info = ["The 'Best coder' metric rewards the most active developers on R packages (related to the pharmaceutical industry). The metric takes into account the number of involvement in R packages development and the number of commits.", "The altruistic metric rewards people who help other developers through github isssues. The metric takes into account the first response to a github post, the number of comments on a post and the number of reactions on it.", "The self pillar metric rewards people who are active on github issues of their own projects. The metric takes into account the first response to a github post, the number of comments on a post and the number of reactions on it."]
+    l_metrics_info = ["The Coder metric rewards the most active developers on R packages (related to the pharmaceutical industry). The metric takes into account the number of involvement in R packages development and the number of commits.", "The Altruist metric rewards people who help other developers through github isssues. The metric takes into account the first response to a github post, the number of comments on a post and the number of reactions on it.", "The Self maintainer metric rewards people who are active on github issues of their own projects. The metric takes into account the first response to a github post, the number of comments on a post and the number of reactions on it."]
     for i in range(0,3):
         components = rf"""
             <div class="row row_card">
