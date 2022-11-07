@@ -37,9 +37,9 @@ def page_content():
             options=('All', 'R', 'Python'),
             index=0
         )
-        st.header("OS health")
+        st.header("OS Activity")
         os_health = st.slider(
-            label="0 = Low health ; 100 = High health",
+            label="0 = Low activity ; 100 = High activity",
             min_value=0,
             max_value=100, 
             value=(0, 100)

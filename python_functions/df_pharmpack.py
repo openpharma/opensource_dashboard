@@ -144,7 +144,7 @@ def display_data(df: pd.DataFrame) -> List[str]:
                                     <p class="p-0">Since last<br /> commit</p>
                                 </div>
                                 <div class="col-xl-3 col-lg-4 col-4 text-center align-top reliability_info">
-                                    <p><dfn data-info="The os health score is based on openpharma.github.io/os-health.html">Os-Health &#x24D8;</dfn></p>
+                                    <p><dfn data-info="The OS Activity score is based on openpharma.github.io/os-health.html">Os-Activity &#x24D8;</dfn></p>
                                         <div class="progress">
                                             <div class="metrics_confidence progress-bar-striped progress-bar-animated {risk_color[i]}" style="width: {int(oshealth_metric[i])}%" role="progressbar" aria-valuenow="{oshealth_metric[i]}" aria-valuemin="0" aria-valuemax="100">
                                             <p style="width: {risk_width_color[i]};">{int(oshealth_metric[i])}</p>
