@@ -16,6 +16,7 @@ def read_df(path: str) -> pd.DataFrame:
 def clean_html(raw_html: str):
     CLEANR = re.compile('<.*?>') 
     cleantext = re.sub(CLEANR, '', raw_html)
+    cleantext = re.sub("\n", ' ', cleantext)
     return cleantext
 
 def filter_df(
@@ -74,7 +75,7 @@ def display_data(df: pd.DataFrame) -> List[str]:
     else:
         nb_cards = len(df)
     df = df.iloc[:nb_cards]
-    df['last_commit_d'] = df['last_commit_d'].astype('Int64')
+    df = df.astype({'last_commit_d': "Int64"})
     pack_img = df['icon_package'].tolist()
     lang_img = df['icon_package_link'].tolist()
     list_full_name = df['full_name'].tolist()
