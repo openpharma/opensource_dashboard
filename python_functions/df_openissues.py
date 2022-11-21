@@ -59,6 +59,7 @@ def display_data(df) -> List[str]:
     issue_label = df['label'].tolist()
     issue_comments = df['comments'].tolist()
     issue_body = df['body'].tolist()
+    issue_url = df['url'].tolist()
     df['plots'] = df['plots'].apply(lambda x: ", plots" if x == True else "")
     df['tables'] = df['tables'].apply(lambda x: ", tables" if x == True else "")
     df['stats'] = df['stats'].apply(lambda x: ", stats" if x == True else "")
@@ -86,9 +87,11 @@ def display_data(df) -> List[str]:
                                     <img src="{pack_icon[i]}" alt="" height="50" />
                                 </div>
                                 <div class="col-sm-10">
-                                    <h3 class="author_status h2_remove_hover"><u>Last active :</u> {issue_day[i]} d | <u>Author</u> : {issue_author[i]} - {issue_author_status[i]}</h3>
+                                    <p class="author_status h2_remove_hover"><u>Last active :</u> {issue_day[i]} d | <u>Author</u> : {issue_author[i]} - {issue_author_status[i]} | <a href="{issue_url[i]}" style="color: black" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-github ml-2" viewBox="0 0 20 20">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg></a></p>
                                     <div class="title_tag_issue align-items-center d-inline-flex">
-                                        <p class="h2_remove_hover title_open_issue">{issue_title[i]}</p>
+                                        <p class="h2_remove_hover title_open_issue"><a href="{issue_url[i]}">{issue_title[i]}</a></p>
                                         <p class="pill_tag"><span class="badge rounded-pill text-bg-primary">{issue_label[i]}</span></p>
                                     </div>
                                     <div class="list_metrics">
