@@ -1,5 +1,9 @@
 import streamlit as st
 
+PATH_IMG_OBJECTIVES = "https://openpharma.s3.us-east-2.amazonaws.com/streamlit_img/openpharma_objectives.png"
+PATH_PHUSE_PRES = "https://openpharma.s3.us-east-2.amazonaws.com/Phuse/Openpharma-Phuse+Connect+EU+2022+-+Belfast.pdf"
+IMG_JAMES = "https://avatars.githubusercontent.com/u/2760096?v=4"
+IMG_MATHIEU = "https://avatars.githubusercontent.com/u/49449000?v=4"
 
 def page_content():
     """Read and display data"""
@@ -11,12 +15,9 @@ def page_content():
     
     manifesto = rf"""
     <p style="font-size: 1.3em;">The objective of openpharma is to provide a neutral home for open source software related to pharmaceutical industry that is not tied to one company or institution.</p>
-    <p id="title_main_obj">Main objectives</p>
+    <p id="title_main_obj">Objectives</p>
     <div class="row icon_objective_open">
-            <div class="col-md-3 d-md-inline"><span>&#128218;</span> <p>Find a relevant package using advanced search filter and NLP</p></div>
-            <div class="col-md-3 d-md-inline"><span>&#128161;</span><p>Know more about a package such as purpose, description, organisations, contributors, reliability and advanced insights</p></div>
-            <div class="col-md-3 d-md-inline"><span>&#128588;</span><p>Know more about the community : best contributors and active teammates</p></div>
-            <div class="col-md-3 d-md-inline"><span>&#128170;</span><p>Display urgent open issues and encourage people to contribute</p></div>
+            <img src="{PATH_IMG_OBJECTIVES}" style="width: 70%; margin: auto;" />
     </div>
 
     <p id="principles_open_pharma">This Github organization is managed under the following principals:</p>
@@ -35,3 +36,15 @@ def page_content():
     </ul>
     """
     st.markdown(manifesto, unsafe_allow_html=True)
+
+    st.subheader("Presentation : PHUSE EU Connect 2022 - Belfast")
+
+    st.write("Link to the presentation : [Openpharma PDF]({})".format(PATH_PHUSE_PRES))
+
+    st.subheader("Authors and maintainers :")
+
+    st.image(IMG_MATHIEU, width=80, caption="Mathieu Cayssol")
+    st.write("[Github]({})".format("https://github.com/MathieuCayssol"))
+
+    st.image(IMG_JAMES, width=80, caption="James Black")
+    st.write("[Github]({})".format("https://github.com/epijim"))
